@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import genevoImage from '../assets/genevo.jpg';
 
 const Hero = () => {
   return (
@@ -47,6 +49,15 @@ const Hero = () => {
                 </p>
               </div>
             </div>
+
+            {/* Hình ảnh Geneva */}
+            <div className="mt-8 flex justify-center">
+              <img 
+                src={genevoImage} 
+                alt="Hiệp định Paris Geneva" 
+                className="rounded-xl shadow-2xl max-w-full h-auto transition-all hover:scale-105"
+              />
+            </div>
           </motion.div>
 
           <motion.div
@@ -76,12 +87,13 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mt-12 mb-16"
           >
-            <button
-              onClick={() => document.getElementById('lessons')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-primary hover:bg-red-700 text-white font-sans font-bold py-4 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all"
-            >
-              Khám Phá Bài Học ↓
-            </button>
+            <Link to="/bai-hoc">
+              <button
+                className="bg-primary hover:bg-red-700 text-white font-sans font-bold py-4 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all"
+              >
+                Khám Phá Bài Học ↓
+              </button>
+            </Link>
           </motion.div>
         </div>
       </div>

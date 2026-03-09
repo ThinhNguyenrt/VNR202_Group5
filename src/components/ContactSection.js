@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import ngoaigiaoImage from '../assets/ngoaigiao.jpg';
 
 const ContactSection = () => {
   return (
@@ -72,6 +73,22 @@ const ContactSection = () => {
                 </p>
               </motion.div>
             </div>
+          </motion.div>
+        </div>
+
+        {/* Hình ảnh ngoại giao */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="flex justify-center"
+          >
+            <img 
+              src={ngoaigiaoImage} 
+              alt="Ngoại giao Việt Nam" 
+              className="rounded-2xl shadow-2xl max-w-full h-auto transition-all hover:scale-105"
+            />
           </motion.div>
         </div>
 

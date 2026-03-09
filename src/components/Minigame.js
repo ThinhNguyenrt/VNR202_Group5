@@ -9,25 +9,60 @@ const Minigame = () => {
 
   const questions = [
     {
-      question: 'Cuộc kháng chiến chống Mỹ diễn ra trong giai đoạn nào?',
-      options: ['1945-1954', '1954-1975', '1965-1973', '1946-1954'],
+      question: 'Trong nghệ thuật đàm phán tại Paris, tại sao Chủ tịch Hồ Chí Minh lại căn dặn đoàn đại biểu Việt Nam "không được làm Mỹ mất mặt"?',
+      options: [
+        'Vì lo ngại tiềm lực quân sự của Mỹ còn quá lớn.',
+        'Để giữ thể diện cho một siêu cường, tạo điều kiện thuận lợi cho họ rút quân trong danh dự và đạt mục tiêu chấm dứt chiến tranh.',
+        'Vì Việt Nam muốn duy trì quan hệ ngoại giao bí mật với Mỹ sau chiến tranh.',
+        'Do áp lực từ các nước đồng minh lớn như Liên Xô và Trung Quốc.'
+      ],
       correct: 1,
+      explanation: 'Đây là bài học về sự khôn khéo với nước lớn. Mỹ là nước lớn đứng đầu thế giới tư bản, việc họ phải ngồi đàm phán đã là một thất bại. Ta chủ trương "nối nhịp cầu vàng" để họ rút quân mà không bị tổn thương sĩ diện quá mức, từ đó đạt được kết quả thực chất cho dân tộc.'
     },
     {
-      question: 'Chiến dịch nào đánh dấu đỉnh cao của cuộc kháng chiến?',
-      options: ['Điện Biên Phủ', 'Hồ Chí Minh', 'Tết Mậu Thân', 'Biên Giới'],
-      correct: 1,
+      question: 'Nhóm "think tank" đầu tiên của ngoại giao Việt Nam, đóng vai trò "túi khôn" soạn thảo các kịch bản đàm phán Paris có tên ký hiệu là gì?',
+      options: [
+        'Nhóm Đoàn kết Đông Dương.',
+        'Tổ Giải pháp Ngoại giao.',
+        'Nhóm CP-50.',
+        'Tiểu ban Việt Nam 13.'
+      ],
+      correct: 2,
+      explanation: 'CP-50 là đơn vị trực thuộc Bộ Chính trị, tập hợp những nhà ngoại giao xuất sắc để nghiên cứu sâu các phương án "đánh - đàm". Nhóm đã xây dựng các giải pháp hòa bình đột phá như giải pháp 10 điểm (1969) hay dự thảo Hiệp định Paris (1972).'
     },
     {
-      question: 'Hiệp định Paris được ký kết năm nào?',
-      options: ['1973', '1975', '1972', '1974'],
-      correct: 0,
+      question: 'Bài học kinh nghiệm nào là "kim chỉ nam" giúp Việt Nam nhận được viện trợ từ cả Liên Xô và Trung Quốc dù hai nước này đang chia rẽ sâu sắc?',
+      options: [
+        'Ưu tiên quyền lợi của các nước xã hội chủ nghĩa lên trên hết.',
+        'Thực hiện chính sách "đi với bên này, chống bên kia" để tranh thủ lợi ích.',
+        'Kiên trì đường lối độc lập, tự chủ, tự lực, tự cường gắn liền với đoàn kết quốc tế rộng rãi.',
+        'Chờ đợi sự thỏa hiệp giữa các nước lớn để tìm kiếm giải pháp.'
+      ],
+      correct: 2,
+      explanation: 'Trong bối cảnh mâu thuẫn Xô - Trung tăng cao, Việt Nam đã khéo léo giữ tình hữu nghị chân thành với cả hai, đồng thời kiên định tự quyết định đường lối kháng chiến của mình. Ta không để vấn đề Việt Nam rơi vào quỹ đạo thỏa hiệp của các nước lớn.'
     },
     {
-      question: 'Yếu tố nào đóng vai trò quyết định trong thắng lợi?',
-      options: ['Sức mạnh quân sự', 'Đoàn kết dân tộc', 'Vũ khí hiện đại', 'Hỗ trợ quốc tế'],
-      correct: 1,
+      question: 'Mối quan hệ giữa mặt trận quân sự và mặt trận ngoại giao được Đảng ta xác định như thế nào trong Nghị quyết Trung ương 13 (1/1967)?',
+      options: [
+        'Ngoại giao hoàn toàn phụ thuộc và đi sau các thắng lợi quân sự.',
+        'Đấu tranh ngoại giao chỉ là hình thức bổ trợ cho đấu tranh chính trị.',
+        'Thắng lợi quân sự là nhân tố quyết định, làm cơ sở cho thắng lợi ngoại giao; nhưng ngoại giao có vai trò chủ động, tích cực và chiến lược.',
+        'Ngoại giao có thể thay thế hoàn toàn đấu tranh quân sự để kết thúc chiến tranh sớm.'
+      ],
+      correct: 2,
+      explanation: 'Đảng xác định "đánh thắng thì ngoại giao thắng nhiều". Tuy nhiên, ngoại giao không đơn thuần phản ánh chiến trường mà còn phải chủ động tấn công để tạo ra thế mạnh tổng hợp, tiêu biểu là việc mở ra cục diện "vừa đánh, vừa đàm" sau Tết Mậu Thân 1968.'
     },
+    {
+      question: 'Chiến thắng nào sau đây được coi là "đòn quyết định" buộc Mỹ phải ký Hiệp định Paris năm 1973 với các điều khoản gần như không thay đổi so với dự thảo ban đầu của ta?',
+      options: [
+        'Chiến dịch Đường 9 - Nam Lào (1971).',
+        'Cuộc Tổng tiến công và nổi dậy Xuân - Hè 1972.',
+        'Đại thắng mùa Xuân năm 1975.',
+        'Trận "Điện Biên Phủ trên không" 12 ngày đêm cuối năm 1972.'
+      ],
+      correct: 3,
+      explanation: 'Sau khi Mỹ mở chiến dịch ném bom ác liệt bằng B52 vào Hà Nội và Hải Phòng để ép ta chỉnh sửa Hiệp định, sự thất bại nặng nề của họ trong 12 ngày đêm đã buộc họ phải ký kết vào ngày 27/1/1973. Đây là minh chứng hùng hồn nhất cho bài học về "nắm bắt và tạo thời cơ".'
+    }
   ];
 
   const handleAnswer = (index) => {
@@ -63,7 +98,7 @@ const Minigame = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">
-            🎮 Minigame Kiểm Tra
+            Minigame 
           </h2>
           <p className="text-xl text-gray-600">
             Kiểm tra kiến thức của bạn về cuộc kháng chiến chống Mỹ
@@ -116,6 +151,21 @@ const Minigame = () => {
                     </motion.button>
                   ))}
                 </div>
+
+                {selectedAnswer !== null && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-lg"
+                  >
+                    <p className="text-sm font-semibold text-blue-800 mb-2">
+                      {selectedAnswer === questions[currentQuestion].correct ? '✓ Chính xác!' : '✗ Chưa đúng'}
+                    </p>
+                    <p className="text-sm text-gray-700 leading-relaxed">
+                      <span className="font-semibold">Giải thích:</span> {questions[currentQuestion].explanation}
+                    </p>
+                  </motion.div>
+                )}
               </>
             ) : (
               <div className="text-center">

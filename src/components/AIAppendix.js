@@ -2,26 +2,35 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const AIAppendix = () => {
-  const aiTools = [
+  const aiUsage = [
     {
-      title: 'Trợ Lý AI Lịch Sử',
-      description: 'Hỏi đáp về các sự kiện, nhân vật và bài học từ cuộc kháng chiến',
+      title: 'Claude Sonnet 4.5',
+      description: 'Hỗ trợ animation, tối ưu hóa giao diện cho trang web',
       icon: '🤖',
+      features: [
+        'Tạo hiệu ứng chuyển động mượt mà',
+        'Tối ưu hóa trải nghiệm người dùng',
+        'Thiết kế giao diện đẹp mắt và chuyên nghiệp',
+        'Cải thiện tính tương tác của website'
+      ],
+      color: 'from-purple-600 to-blue-600'
     },
     {
-      title: 'Phân Tích Sâu',
-      description: 'AI phân tích các chiến lược quân sự và chính trị trong thời kỳ kháng chiến',
-      icon: '📊',
-    },
-    {
-      title: 'Tài Liệu Tham Khảo',
-      description: 'Kho tài liệu số hóa, được AI tổ chức và dễ dàng tìm kiếm',
-      icon: '📚',
-    },
+      title: 'Gemini Pro',
+      description: 'Hỗ trợ cung cấp thêm nội dung, gợi ý cách trình bày nội dung cho trang web',
+      icon: '✨',
+      features: [
+        'Cung cấp nội dung lịch sử chi tiết',
+        'Gợi ý cách trình bày thông tin hiệu quả',
+        'Phân tích và tổ chức nội dung logic',
+        'Đề xuất cách tiếp cận sáng tạo'
+      ],
+      color: 'from-blue-600 to-cyan-600'
+    }
   ];
 
   return (
-    <section id="ai-appendix" className="py-20 bg-white">
+    <section id="ai-appendix" className="py-20 bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -30,62 +39,53 @@ const AIAppendix = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-primary">
-            🤖 Phụ Lục AI
+            📋 Báo Cáo Sử Dụng AI
           </h2>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            Công nghệ AI hỗ trợ học tập và nghiên cứu lịch sử một cách hiện đại và hiệu quả
+            Tổng hợp các công nghệ AI được sử dụng trong quá trình phát triển website
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {aiTools.map((tool, index) => (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {aiUsage.map((ai, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: index === 0 ? -50 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
-              whileHover={{ scale: 1.05 }}
-              className="bg-white rounded-xl p-6 border-2 border-gray-200 shadow-lg"
+              className="bg-white rounded-2xl p-8 shadow-xl border-2 border-gray-100 hover:shadow-2xl transition-shadow"
             >
-              <div className="text-6xl mb-4">{tool.icon}</div>
-              <h3 className="text-2xl font-serif font-bold mb-3 text-primary">{tool.title}</h3>
-              <p className="text-gray-700">{tool.description}</p>
+              <div className={`text-6xl mb-6 bg-gradient-to-r ${ai.color} bg-clip-text text-transparent`}>
+                {ai.icon}
+              </div>
+              <h3 className={`text-3xl font-serif font-bold mb-4 bg-gradient-to-r ${ai.color} bg-clip-text text-transparent`}>
+                {ai.title}
+              </h3>
+              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                {ai.description}
+              </p>
+              
+              <div className="space-y-3">
+                <h4 className="font-bold text-primary text-lg mb-3">Chức năng chính:</h4>
+                {ai.features.map((feature, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + idx * 0.1 }}
+                    className="flex items-start gap-3"
+                  >
+                    <span className="text-secondary text-xl mt-1">✓</span>
+                    <p className="text-gray-700">{feature}</p>
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto bg-gradient-to-r from-primary to-red-700 rounded-2xl p-8 text-center shadow-2xl border-2 border-secondary/50"
-        >
-          <h3 className="text-3xl font-serif font-bold mb-4 text-white">Trải Nghiệm AI Tương Tác</h3>
-          <p className="text-lg font-sans mb-6 opacity-90 text-white">
-            Đặt câu hỏi về bất kỳ khía cạnh nào của cuộc kháng chiến chống Mỹ và nhận được câu trả lời chi tiết từ AI
-          </p>
-          <div className="flex gap-4 justify-center flex-wrap">
-            <button className="bg-white text-primary font-sans font-bold py-3 px-6 rounded-full hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl">
-              Bắt Đầu Trò Chuyện
-            </button>
-            <button className="bg-transparent border-2 border-white text-white font-sans font-bold py-3 px-6 rounded-full hover:bg-white/10 transition-all">
-              Xem Demo
-            </button>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="mt-12 text-center text-gray-600"
-        >
-          <p className="text-sm">
-            * Tính năng AI đang trong giai đoạn phát triển. Thông tin được cung cấp chỉ mang tính tham khảo.
-          </p>
-        </motion.div>
       </div>
     </section>
   );

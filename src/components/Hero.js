@@ -74,7 +74,7 @@ const Hero = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-12"
+            className="mt-12 mb-16"
           >
             <button
               onClick={() => document.getElementById('lessons')?.scrollIntoView({ behavior: 'smooth' })}

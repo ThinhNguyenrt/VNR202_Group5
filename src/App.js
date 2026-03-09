@@ -1,24 +1,27 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Lessons from './components/Lessons';
-import Minigame from './components/Minigame';
-import AIAppendix from './components/AIAppendix';
-import ContactSection from './components/ContactSection';
-import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import LessonsPage from './pages/LessonsPage';
+import MinigamePage from './pages/MinigamePage';
+import AIAppendixPage from './pages/AIAppendixPage';
+import ContactPage from './pages/ContactPage';
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <Hero />
-      <Lessons />
-      <Minigame />
-      <AIAppendix />
-      <ContactSection />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/bai-hoc" element={<LessonsPage />} />
+          <Route path="/minigame" element={<MinigamePage />} />
+          <Route path="/phu-luc-ai" element={<AIAppendixPage />} />
+          <Route path="/lien-he" element={<ContactPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

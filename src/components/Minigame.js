@@ -54,7 +54,7 @@ const Minigame = () => {
   };
 
   return (
-    <section id="minigame" className="py-20 bg-gradient-to-br from-gray-100 to-white">
+    <section id="minigame" className="py-20 bg-bg-light">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -62,7 +62,7 @@ const Minigame = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-crimson mb-4">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">
             🎮 Minigame Kiểm Tra
           </h2>
           <p className="text-xl text-gray-600">
@@ -83,12 +83,12 @@ const Minigame = () => {
                   <span className="text-lg font-semibold text-gray-600">
                     Câu {currentQuestion + 1}/{questions.length}
                   </span>
-                  <span className="text-lg font-semibold text-crimson">
+                  <span className="text-lg font-sans font-semibold text-primary">
                     Điểm: {score}
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-bold text-gray-800 mb-8">
+                <h3 className="text-2xl font-serif font-bold text-gray-800 mb-8">
                   {questions[currentQuestion].question}
                 </h3>
 
@@ -124,7 +124,7 @@ const Minigame = () => {
                   animate={{ scale: 1 }}
                   transition={{ type: 'spring', stiffness: 200 }}
                 >
-                  <h3 className="text-4xl font-bold text-crimson mb-4">
+                  <h3 className="text-4xl font-serif font-bold text-primary mb-4">
                     Hoàn Thành! 🎉
                   </h3>
                   <p className="text-3xl font-semibold text-gray-700 mb-8">
@@ -139,7 +139,7 @@ const Minigame = () => {
                   </p>
                   <button
                     onClick={resetGame}
-                    className="bg-crimson hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105"
+                    className="bg-primary hover:bg-red-700 text-white font-sans font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105"
                   >
                     Chơi Lại
                   </button>

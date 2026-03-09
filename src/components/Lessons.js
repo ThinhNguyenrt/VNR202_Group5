@@ -79,8 +79,32 @@ const lessons = [
 const Lessons = () => {
   const [selectedLesson, setSelectedLesson] = useState(null);
 
+  // Stagger animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: 'easeOut',
+      },
+    },
+  };
+
   return (
-    <section id="lessons" className="py-20 bg-gray-50">
+    <section id="lessons" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -88,39 +112,48 @@ const Lessons = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-crimson mb-4">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">
             Bài Học Kinh Nghiệm
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <div className="h-1 w-32 bg-gradient-to-r from-primary via-secondary to-primary rounded-full mx-auto mb-6"></div>
+          <p className="text-xl font-sans text-gray-600 max-w-3xl mx-auto">
             Những bài học quý báu từ cuộc kháng chiến chống Mỹ cứu nước vĩ đại của dân tộc,
             giá trị vượt thời gian cho các thế hệ mai sau.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           {lessons.map((lesson, index) => (
             <motion.div
               key={lesson.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              variants={itemVariants}
+              whileHover={{ scale: 1.05, y: -5 }}
               onClick={() => setSelectedLesson(lesson)}
-              className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer"
+              className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer border-2 border-secondary/30 hover:border-secondary hover:shadow-2xl transition-all duration-300"
             >
-              <div className={`h-32 bg-gradient-to-br ${lesson.color} flex items-center justify-center`}>
+              <div className={`h-32 bg-gradient-to-br ${lesson.color} flex items-center justify-center relative`}>
                 <span className="text-6xl">{lesson.icon}</span>
+                <div className="absolute top-2 right-2 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
+                  <span className="text-white font-sans font-bold text-sm">#{lesson.id}</span>
+                </div>
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-gray-800 mb-3">{lesson.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{lesson.description}</p>
+                <h3 className="text-xl font-serif font-bold text-gray-800 mb-3">{lesson.title}</h3>
+                <p className="text-gray-600 font-sans leading-relaxed">{lesson.description}</p>
               </div>
               <div className="px-6 pb-6">
-                <div className="w-full h-1 bg-gradient-to-r from-crimson to-gold rounded-full"></div>
-                <p className="text-sm text-gray-400 mt-2 text-center">👆 Nhấn để xem chi tiết</p>
+                <div className="w-full h-1 bg-gradient-to-r from-primary via-secondary to-primary rounded-full"></div>
+                <p className="text-sm text-gray-400 font-sans mt-2 text-center">👆 Nhấn để xem chi tiết</p>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Modal hiển thị chi tiết */}
         <AnimatePresence>
@@ -149,25 +182,25 @@ const Lessons = () => {
                   </button>
                 </div>
                 <div className="p-8">
-                  <h2 className="text-3xl font-bold text-crimson mb-4">
+                  <h2 className="text-3xl font-serif font-bold text-primary mb-4">
                     {selectedLesson.title}
                   </h2>
-                  <div className="h-1 w-20 bg-gradient-to-r from-crimson to-gold rounded-full mb-6"></div>
+                  <div className="h-1 w-20 bg-gradient-to-r from-primary via-secondary to-primary rounded-full mb-6"></div>
                   
                   <div className="space-y-4">
-                    <div className="bg-gray-50 p-6 rounded-xl border-l-4 border-crimson">
-                      <h3 className="font-bold text-gray-800 mb-2 text-lg">📌 Tóm tắt</h3>
-                      <p className="text-gray-700 leading-relaxed">{selectedLesson.description}</p>
+                    <div className="bg-gray-50 p-6 rounded-xl border-l-4 border-primary">
+                      <h3 className="font-serif font-bold text-gray-800 mb-2 text-lg">📌 Tóm tắt</h3>
+                      <p className="text-gray-700 font-sans leading-relaxed">{selectedLesson.description}</p>
                     </div>
                     
                     <div className="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-600">
-                      <h3 className="font-bold text-gray-800 mb-2 text-lg">📖 Chi tiết & Dẫn chứng lịch sử</h3>
-                      <p className="text-gray-700 leading-relaxed">{selectedLesson.detail}</p>
+                      <h3 className="font-serif font-bold text-gray-800 mb-2 text-lg">📖 Chi tiết & Dẫn chứng lịch sử</h3>
+                      <p className="text-gray-700 font-sans leading-relaxed">{selectedLesson.detail}</p>
                     </div>
 
-                    <div className="bg-yellow-50 p-6 rounded-xl border-l-4 border-gold">
-                      <h3 className="font-bold text-gray-800 mb-2 text-lg">💡 Ý nghĩa thời đại</h3>
-                      <p className="text-gray-700 leading-relaxed">
+                    <div className="bg-yellow-50 p-6 rounded-xl border-l-4 border-secondary">
+                      <h3 className="font-serif font-bold text-gray-800 mb-2 text-lg">💡 Ý nghĩa thời đại</h3>
+                      <p className="text-gray-700 font-sans leading-relaxed">
                         Bài học này không chỉ có giá trị lịch sử mà còn là kim nam châm cho công tác 
                         ngoại giao hiện đại của Việt Nam, đặc biệt trong bối cảnh hội nhập quốc tế sâu rộng.
                       </p>
@@ -176,7 +209,7 @@ const Lessons = () => {
                   
                   <button
                     onClick={() => setSelectedLesson(null)}
-                    className="mt-8 w-full bg-crimson hover:bg-red-700 text-white font-bold py-4 px-6 rounded-xl transition-all"
+                    className="mt-8 w-full bg-primary hover:bg-red-700 text-white font-sans font-bold py-4 px-6 rounded-xl transition-all"
                   >
                     Đóng
                   </button>
@@ -193,11 +226,11 @@ const Lessons = () => {
           transition={{ delay: 0.8 }}
           className="mt-16 text-center"
         >
-          <div className="bg-gradient-to-r from-crimson to-red-700 text-white p-8 rounded-2xl shadow-xl max-w-4xl mx-auto">
-            <p className="text-2xl font-bold italic mb-4">
+          <div className="bg-gradient-to-r from-primary to-red-700 text-white p-8 rounded-2xl shadow-xl max-w-4xl mx-auto">
+            <p className="text-2xl font-serif font-bold italic mb-4">
               "Những bài học này không chỉ thuộc về quá khứ, mà còn là kim nam châm soi đường cho hiện tại và tương lai."
             </p>
-            <p className="text-lg opacity-90">Giá trị lịch sử và thời đại</p>
+            <p className="text-lg font-sans opacity-90">Giá trị lịch sử và thời đại</p>
           </div>
         </motion.div>
       </div>

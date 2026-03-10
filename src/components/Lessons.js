@@ -113,7 +113,7 @@ const Lessons = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">
-            Bài Học Kinh Nghiệm
+            Bài học kinh nghiệm
           </h2>
           <div className="h-1 w-32 bg-gradient-to-r from-primary via-secondary to-primary rounded-full mx-auto mb-6"></div>
           <p className="text-xl font-sans text-gray-600 max-w-3xl mx-auto">
@@ -198,13 +198,22 @@ const Lessons = () => {
                       <p className="text-gray-700 font-sans leading-relaxed">{selectedLesson.detail}</p>
                     </div>
 
-                    <div className="bg-yellow-50 p-6 rounded-xl border-l-4 border-secondary">
-                      <h3 className="font-serif font-bold text-gray-800 mb-2 text-lg">💡 Ý nghĩa thời đại</h3>
-                      <p className="text-gray-700 font-sans leading-relaxed">
-                        Bài học này không chỉ có giá trị lịch sử mà còn là kim nam châm cho công tác 
-                        ngoại giao hiện đại của Việt Nam, đặc biệt trong bối cảnh hội nhập quốc tế sâu rộng.
-                      </p>
-                    </div>
+                    {selectedLesson.application && (
+                      <div className="bg-green-50 p-6 rounded-xl border-l-4 border-green-600">
+                        <h3 className="font-serif font-bold text-gray-800 mb-2 text-lg">🎯 Vận dụng thực tiễn</h3>
+                        <p className="text-gray-700 font-sans leading-relaxed">{selectedLesson.application}</p>
+                      </div>
+                    )}
+
+                    {!selectedLesson.application && (
+                      <div className="bg-yellow-50 p-6 rounded-xl border-l-4 border-secondary">
+                        <h3 className="font-serif font-bold text-gray-800 mb-2 text-lg">💡 Ý nghĩa thời đại</h3>
+                        <p className="text-gray-700 font-sans leading-relaxed">
+                          Bài học này không chỉ có giá trị lịch sử mà còn là kim nam châm cho công tác 
+                          ngoại giao hiện đại của Việt Nam, đặc biệt trong bối cảnh hội nhập quốc tế sâu rộng.
+                        </p>
+                      </div>
+                    )}
                   </div>
                   
                   <button

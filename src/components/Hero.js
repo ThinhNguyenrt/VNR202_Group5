@@ -18,10 +18,10 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-7xl font-serif font-bold text-primary mb-6">
-              Bài Học Kinh Nghiệm
+              Bài học kinh nghiệm
             </h1>
             <h2 className="text-3xl md:text-5xl font-serif font-semibold text-gray-700 mb-8">
-              Cuộc Kháng Chiến Chống Mỹ
+              Cuộc kháng chiến chống Mỹ
             </h2>
             <p className="text-xl md:text-2xl font-sans text-gray-600 mb-8">
               (1954 - 1975)
@@ -29,7 +29,7 @@ const Hero = () => {
             
             {/* Bối cảnh lịch sử */}
             <div className="max-w-4xl mx-auto text-left bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-secondary/20">
-              <h3 className="text-2xl font-serif font-bold text-primary mb-4">📜 Bối Cảnh Lịch Sử</h3>
+              <h3 className="text-2xl font-serif font-bold text-primary mb-4"> Bối cảnh lịch sử</h3>
               <div className="space-y-4 text-gray-700 text-lg leading-relaxed font-sans">
                 <p>
                   Sau Hiệp định Geneva 1954, đất nước tạm thời chia làm hai miền:

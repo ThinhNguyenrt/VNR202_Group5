@@ -46,9 +46,6 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               className="flex items-center space-x-3"
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-red-700 rounded-full flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-xl">⭐</span>
-              </div>
               <span className="text-primary font-serif font-bold text-xl">Kháng Chiến 1954-1975</span>
             </motion.div>
           </Link>

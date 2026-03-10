@@ -92,6 +92,51 @@ const ContactSection = () => {
           </motion.div>
         </div>
 
+        {/* Liên hệ thực tiễn */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border-2 border-secondary/50"
+          >
+            <h3 className="text-3xl font-serif font-bold text-center mb-6 text-primary">
+              🔗 Liên Hệ Thực Tiễn
+            </h3>
+            <div className="space-y-4 text-lg font-sans leading-relaxed">
+              <div className="bg-emerald-50 rounded-xl p-6 border-l-4 border-emerald-600">
+                <h4 className="font-serif font-bold text-gray-800 mb-3 text-xl">🤗 Vận dụng Bài học "Đại đoàn kết toàn dân tộc"</h4>
+                <p className="mb-3">
+                  Trong đại dịch COVID-19 hoặc các đợt thiên tai, tinh thần đoàn kết, tương thân tương ái của người Việt lại được khơi dậy mạnh mẽ như thời kháng chiến.
+                </p>
+                <p className="text-gray-700">
+                  Phát huy vai trò của Mặt trận Tổ quốc Việt Nam trong việc tập hợp sức mạnh các tầng lớp nhân dân, kiều bào nước ngoài để xây dựng đất nước.
+                </p>
+              </div>
+              
+              <div className="bg-sky-50 rounded-xl p-6 border-l-4 border-sky-600">
+                <h4 className="font-serif font-bold text-gray-800 mb-3 text-xl">🌐 Vận dụng Bài học "Kết hợp sức mạnh dân tộc với sức mạnh thời đại"</h4>
+                <p className="mb-3">
+                  Việt Nam hiện nay kiên trì đường lối đối ngoại "ngoại giao cây tre": đa phương hóa, đa dạng hóa quan hệ quốc tế, là bạn, là đối tác tin cậy của các nước.
+                </p>
+                <p className="text-gray-700">
+                  Chủ động hội nhập kinh tế quốc tế (gia nhập WTO, các hiệp định tự do thương mại CPTPP, EVFTA...) để tranh thủ nguồn vốn, công nghệ và thị trường.
+                </p>
+              </div>
+              
+              <div className="bg-rose-50 rounded-xl p-6 border-l-4 border-rose-600">
+                <h4 className="font-serif font-bold text-gray-800 mb-3 text-xl">🏛️ Vận dụng Bài học "Sự lãnh đạo đúng đắn của Đảng"</h4>
+                <p className="mb-3">
+                  Đảng không ngừng tự đổi mới, chỉnh đốn, quyết liệt trong công tác phòng chống tham nhũng, tiêu cực để củng cố niềm tin của nhân dân.
+                </p>
+                <p className="text-gray-700">
+                  Kiên định mục tiêu độc lập dân tộc gắn liền với CNXH trong bối cảnh tình hình thế giới có nhiều biến động phức tạp.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
         {/* Vận dụng bài học lịch sử */}
         <div className="max-w-6xl mx-auto mb-16">
           <motion.div

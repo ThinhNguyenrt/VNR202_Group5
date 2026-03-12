@@ -4,9 +4,10 @@ import ngoaigiaoImage from '../assets/ngoaigiao.jpg';
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-primary via-red-700 to-accent"
+    <section id="contact" className="py-20 bg-zinc-950 relative overflow-hidden"
     >
-      <div className="container mx-auto px-4">
+      <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950"></div>
+      <div className="container mx-auto px-4 relative z-10">
         {/* Phần Ngoại giao cây tre */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -14,10 +15,10 @@ const ContactSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6 drop-shadow-lg">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 mb-6">
             🌏 Ngoại Giao Việt Nam Trong Kỷ Nguyên Vươn Mình
           </h2>
-          <div className="h-1 w-32 bg-secondary rounded-full mx-auto mb-8"></div>
+          <div className="h-1 w-48 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-full mx-auto mb-8"></div>
         </motion.div>
 
         {/* Ngoại giao cây tre */}
@@ -26,15 +27,15 @@ const ContactSection = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border-2 border-secondary/50"
+            className="bg-zinc-900/70 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-yellow-600/30"
           >
             <div className="flex items-center justify-center mb-6">
               <span className="text-6xl">🎋</span>
             </div>
-            <h3 className="text-3xl font-serif font-bold text-center text-accent mb-6">
+            <h3 className="text-3xl font-serif font-bold text-center text-yellow-400 mb-6">
               "Ngoại Giao Cây Tre"
             </h3>
-            <p className="text-lg font-sans text-gray-700 leading-relaxed mb-6 text-center max-w-4xl mx-auto">
+            <p className="text-lg font-sans text-gray-300 leading-relaxed mb-6 text-center max-w-4xl mx-auto">
               Giống như cây tre Việt Nam - vững gốc rễ, thân mềm dẻo, ngọn vươn cao - ngoại giao 
               nước ta kết hợp sức mạnh nội lực với khả năng ứng xử linh hoạt trong bối cảnh quốc tế đa chiều.
             </p>
@@ -42,33 +43,33 @@ const ContactSection = () => {
             <div className="grid md:grid-cols-3 gap-6 mt-8">
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl shadow-md border-2 border-accent/30"
+                className="bg-gradient-to-br from-green-900/40 to-emerald-900/40 p-6 rounded-xl shadow-md border border-green-600/30 backdrop-blur-sm"
               >
                 <div className="text-4xl text-center mb-3">🌱</div>
-                <h4 className="font-serif font-bold text-center text-accent mb-2">Rễ Vững</h4>
-                <p className="text-gray-600 font-sans text-center text-sm">
+                <h4 className="font-serif font-bold text-center text-green-400 mb-2">Rễ Vững</h4>
+                <p className="text-gray-300 font-sans text-center text-sm">
                   Độc lập tự chủ, lợi ích dân tộc là nền tảng
                 </p>
               </motion.div>
               
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl shadow-md border-2 border-accent/30"
+                className="bg-gradient-to-br from-green-900/40 to-emerald-900/40 p-6 rounded-xl shadow-md border border-green-600/30 backdrop-blur-sm"
               >
                 <div className="text-4xl text-center mb-3">🎋</div>
-                <h4 className="font-serif font-bold text-center text-accent mb-2">Thân Dẻo</h4>
-                <p className="text-gray-600 font-sans text-center text-sm">
+                <h4 className="font-serif font-bold text-center text-green-400 mb-2">Thân Dẻo</h4>
+                <p className="text-gray-300 font-sans text-center text-sm">
                   Linh hoạt, sáng tạo trong chiến lược, chiến thuật
                 </p>
               </motion.div>
               
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl shadow-md border-2 border-accent/30"
+                className="bg-gradient-to-br from-green-900/40 to-emerald-900/40 p-6 rounded-xl shadow-md border border-green-600/30 backdrop-blur-sm"
               >
                 <div className="text-4xl text-center mb-3">☀️</div>
-                <h4 className="font-serif font-bold text-center text-accent mb-2">Ngọn Cao</h4>
-                <p className="text-gray-600 font-sans text-center text-sm">
+                <h4 className="font-serif font-bold text-center text-green-400 mb-2">Ngọn Cao</h4>
+                <p className="text-gray-300 font-sans text-center text-sm">
                   Hướng tới hòa bình, hợp tác, phát triển
                 </p>
               </motion.div>
@@ -84,11 +85,14 @@ const ContactSection = () => {
             viewport={{ once: true }}
             className="flex justify-center"
           >
-            <img 
-              src={ngoaigiaoImage} 
-              alt="Ngoại giao Việt Nam" 
-              className="rounded-2xl shadow-2xl max-w-full h-auto transition-all hover:scale-105"
-            />
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
+              <img 
+                src={ngoaigiaoImage} 
+                alt="Ngoại giao Việt Nam" 
+                className="relative rounded-2xl shadow-2xl max-w-full h-auto transition-all hover:scale-[1.02] border-2 border-yellow-600/30"
+              />
+            </div>
           </motion.div>
         </div>
 
@@ -98,38 +102,38 @@ const ContactSection = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border-2 border-secondary/50"
+            className="bg-zinc-900/70 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-yellow-600/30"
           >
-            <h3 className="text-3xl font-serif font-bold text-center mb-6 text-primary">
+            <h3 className="text-3xl font-serif font-bold text-center mb-6 text-yellow-400">
               🔗 Liên Hệ Thực Tiễn
             </h3>
             <div className="space-y-4 text-lg font-sans leading-relaxed">
-              <div className="bg-emerald-50 rounded-xl p-6 border-l-4 border-emerald-600">
-                <h4 className="font-serif font-bold text-gray-800 mb-3 text-xl">🤗 Vận dụng Bài học "Đại đoàn kết toàn dân tộc"</h4>
-                <p className="mb-3">
+              <div className="bg-emerald-900/30 rounded-xl p-6 border-l-4 border-emerald-500 backdrop-blur-sm">
+                <h4 className="font-serif font-bold text-emerald-400 mb-3 text-xl">🤗 Vận dụng Bài học "Đại đoàn kết toàn dân tộc"</h4>
+                <p className="mb-3 text-gray-300">
                   Trong đại dịch COVID-19 hoặc các đợt thiên tai, tinh thần đoàn kết, tương thân tương ái của người Việt lại được khơi dậy mạnh mẽ như thời kháng chiến.
                 </p>
-                <p className="text-gray-700">
+                <p className="text-gray-400">
                   Phát huy vai trò của Mặt trận Tổ quốc Việt Nam trong việc tập hợp sức mạnh các tầng lớp nhân dân, kiều bào nước ngoài để xây dựng đất nước.
                 </p>
               </div>
               
-              <div className="bg-sky-50 rounded-xl p-6 border-l-4 border-sky-600">
-                <h4 className="font-serif font-bold text-gray-800 mb-3 text-xl">🌐 Vận dụng Bài học "Kết hợp sức mạnh dân tộc với sức mạnh thời đại"</h4>
-                <p className="mb-3">
+              <div className="bg-sky-900/30 rounded-xl p-6 border-l-4 border-sky-500 backdrop-blur-sm">
+                <h4 className="font-serif font-bold text-sky-400 mb-3 text-xl">🌐 Vận dụng Bài học "Kết hợp sức mạnh dân tộc với sức mạnh thời đại"</h4>
+                <p className="mb-3 text-gray-300">
                   Việt Nam hiện nay kiên trì đường lối đối ngoại "ngoại giao cây tre": đa phương hóa, đa dạng hóa quan hệ quốc tế, là bạn, là đối tác tin cậy của các nước.
                 </p>
-                <p className="text-gray-700">
+                <p className="text-gray-400">
                   Chủ động hội nhập kinh tế quốc tế (gia nhập WTO, các hiệp định tự do thương mại CPTPP, EVFTA...) để tranh thủ nguồn vốn, công nghệ và thị trường.
                 </p>
               </div>
               
-              <div className="bg-rose-50 rounded-xl p-6 border-l-4 border-rose-600">
-                <h4 className="font-serif font-bold text-gray-800 mb-3 text-xl">🏛️ Vận dụng Bài học "Sự lãnh đạo đúng đắn của Đảng"</h4>
-                <p className="mb-3">
+              <div className="bg-rose-900/30 rounded-xl p-6 border-l-4 border-rose-500 backdrop-blur-sm">
+                <h4 className="font-serif font-bold text-rose-400 mb-3 text-xl">🏛️ Vận dụng Bài học "Sự lãnh đạo đúng đắn của Đảng"</h4>
+                <p className="mb-3 text-gray-300">
                   Đảng không ngừng tự đổi mới, chỉnh đốn, quyết liệt trong công tác phòng chống tham nhũng, tiêu cực để củng cố niềm tin của nhân dân.
                 </p>
-                <p className="text-gray-700">
+                <p className="text-gray-400">
                   Kiên định mục tiêu độc lập dân tộc gắn liền với CNXH trong bối cảnh tình hình thế giới có nhiều biến động phức tạp.
                 </p>
               </div>
@@ -143,29 +147,29 @@ const ContactSection = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border-2 border-secondary/50"
+            className="bg-zinc-900/70 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-yellow-600/30"
           >
-            <h3 className="text-3xl font-serif font-bold text-center mb-6 text-primary">
+            <h3 className="text-3xl font-serif font-bold text-center mb-6 text-yellow-400">
               ✨ Vận Dụng Bài Học Lịch Sử Vào Thực Tiễn
             </h3>
             <div className="space-y-4 text-lg font-sans leading-relaxed">
-              <div className="bg-red-50 rounded-xl p-6 border-l-4 border-primary">
-                <p className="mb-4">
-                  <strong>🎯 Tự tin, tự lực, tự cường:</strong> Tinh thần độc lập tự chủ trong chính sách 
+              <div className="bg-red-900/30 rounded-xl p-6 border-l-4 border-red-500 backdrop-blur-sm">
+                <p className="mb-4 text-gray-300">
+                  <strong className="text-red-400">🎯 Tự tin, tự lực, tự cường:</strong> Tinh thần độc lập tự chủ trong chính sách 
                   đối ngoại, không phụ thuộc vào một nước lớn nào, đa phương hóa, đa dạng hóa quan hệ quốc tế.
                 </p>
               </div>
               
-              <div className="bg-blue-50 rounded-xl p-6 border-l-4 border-blue-600">
-                <p className="mb-4">
-                  <strong>🤝 Kết hợp sức mạnh:</strong> Hội nhập quốc tế sâu rộng, đồng thời giữ vững 
+              <div className="bg-blue-900/30 rounded-xl p-6 border-l-4 border-blue-500 backdrop-blur-sm">
+                <p className="mb-4 text-gray-300">
+                  <strong className="text-blue-400">🤝 Kết hợp sức mạnh:</strong> Hội nhập quốc tế sâu rộng, đồng thời giữ vững 
                   bản sắc dân tộc. Việt Nam là "bạn, đối tác tin cậy" của cộng đồng quốc tế.
                 </p>
               </div>
               
-              <div className="bg-green-50 rounded-xl p-6 border-l-4 border-accent">
-                <p>
-                  <strong>💎 Kho tàng kinh nghiệm:</strong> Thắng lợi 1975 không chỉ là niềm tự hào 
+              <div className="bg-green-900/30 rounded-xl p-6 border-l-4 border-green-500 backdrop-blur-sm">
+                <p className="text-gray-300">
+                  <strong className="text-green-400">💎 Kho tàng kinh nghiệm:</strong> Thắng lợi 1975 không chỉ là niềm tự hào 
                   lịch sử mà còn là nguồn cảm hứng, bài học quý báu cho công tác ngoại giao, giúp 
                   Việt Nam vượt qua thách thức và hội nhập thành công trong thế kỷ 21.
                 </p>

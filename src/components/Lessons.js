@@ -1,249 +1,237 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 
+// Dữ liệu 6 bài học kinh nghiệm
 const lessons = [
   {
     id: 1,
     title: 'Độc Lập Tự Chủ & Đoàn Kết Quốc Tế',
-    description: 'Tự lực cánh sinh là gốc, kết hợp sức mạnh dân tộc với sức mạnh quốc tế.',
-    icon: '🌏',
-    color: 'from-red-500 to-red-700',
-    detail: 'Việt Nam luôn giữ vững nguyên tắc tự lực tự cường, đồng thời khéo léo tranh thủ sự ủng hộ của các nước xã hội chủ nghĩa và phong trào giải phóng dân tộc trên thế giới. Đây là nền tảng cho mọi thắng lợi.',
+    description: [
+      'Tự lực cánh sinh là gốc - Không phụ thuộc hoàn toàn vào ngoại lực',
+      'Kết hợp sức mạnh dân tộc với sức mạnh thời đại',
+      'Tranh thủ ủng hộ quốc tế nhưng không đánh mất chủ quyền',
+      'Nguyên tắc: "Tự lực tự cường, tranh thủ sự ủng hộ quốc tế"',
+    ],
+    imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80',
   },
   {
     id: 2,
-    title: 'Kết Hợp Sức Mạnh Dân Tộc & Thời Đại',
-    description: 'Kết hợp 3 tầng mặt trận: Việt Nam, Đông Dương, Nhân dân thế giới.',
-    icon: '🤝',
-    color: 'from-orange-500 to-orange-700',
-    detail: 'Ba tầng mặt trận được xây dựng vững chắc: Mặt trận thống nhất dân tộc Việt Nam, Mặt trận đoàn kết Đông Dương (Việt-Lào-Campuchia), và Mặt trận nhân dân thế giới ủng hộ Việt Nam, tạo thành sức mạnh tổng hợp không thể đánh bại.',
+    title: 'Ba Tầng Mặt Trận Đấu Tranh',
+    description: [
+      'Mặt trận thống nhất dân tộc Việt Nam - Nền tảng cốt lõi',
+      'Mặt trận đoàn kết Đông Dương (Việt-Lào-Campuchia)',
+      'Mặt trận nhân dân thế giới ủng hộ Việt Nam',
+      'Sức mạnh tổng hợp không thể đánh bại',
+    ],
+    imageUrl: 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=800&q=80',
   },
   {
     id: 3,
-    title: 'Ứng Xử Khôn Khéo Với Nước Lớn',
-    description: 'Khôn khéo, tế nhị, không làm mất mặt nước lớn trong đàm phán.',
-    icon: '🎭',
-    color: 'from-purple-500 to-purple-700',
-    detail: 'Trong đàm phán Paris, Việt Nam rất khéo léo giữ "sĩ diện" cho Mỹ, giúp họ tìm được "lối thoát danh dự" khỏi chiến tranh. Đây là nghệ thuật ngoại giao cao, vừa đạt mục tiêu vừa không đẩy đối phương vào thế bí.',
+    title: 'Nghệ Thuật Ngoại Giao Khôn Khéo',
+    description: [
+      'Khéo léo giữ "sĩ diện" cho đối phương trong đàm phán',
+      'Tạo "lối thoát danh dự" cho Mỹ tại Hội nghị Paris',
+      'Vừa kiên định mục tiêu, vừa linh hoạt chiến thuật',
+      'Không đẩy đối phương vào thế bí - Nghệ thuật cao nhất',
+    ],
+    imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80',
   },
   {
     id: 4,
-    title: 'Đoàn Kết Đông Dương',
-    description: 'Việt - Miên - Lào liên minh chiến đấu chống kẻ thù chung.',
-    icon: '⚔️',
-    color: 'from-green-500 to-green-700',
-    detail: 'Mối quan hệ đặc biệt Việt Nam - Lào - Campuchia được xây dựng trên cơ sở cùng có lợi, cùng chiến đấu chống chủ nghĩa đế quốc. Sự đoàn kết này là yếu tố quan trọng làm nên thắng lợi chung của các dân tộc Đông Dương.',
+    title: 'Phối Hợp 3 Mặt Trận: Quân Sự - Chính Trị - Ngoại Giao',
+    description: [
+      'Quân sự là nòng cốt - Tạo thế mạnh trên chiến trường',
+      'Chính trị là gốc - Sức mạnh nhân dân và hệ thống',
+      'Ngoại giao là mũi nhọn - Tranh thủ thắng lợi pháp lý',
+      'Ba mặt trận phối hợp chặt chẽ, hỗ trợ lẫn nhau',
+    ],
+    imageUrl: 'https://images.unsplash.com/photo-1509023464722-18d996393ca8?w=800&q=80',
   },
   {
     id: 5,
-    title: 'Sự Lãnh Đạo Của Đảng',
-    description: 'Nhân tố quyết định mọi thắng lợi của cách mạng Việt Nam.',
-    icon: '⭐',
-    color: 'from-yellow-500 to-yellow-700',
-    detail: 'Đảng Cộng sản Việt Nam với đường lối đúng đắn, sáng tạo, linh hoạt đã lãnh đạo nhân dân vượt qua mọi khó khăn thử thách. Vai trò lãnh đạo của Đảng là nhân tố quyết định, xuyên suốt mọi thắng lợi của cách mạng.',
+    title: 'Nắm Bắt Và Tạo Ra Thời Cơ Chiến Lược',
+    description: [
+      'Tổng tiến công Mậu Thân 1968 - Bước ngoặt lịch sử',
+      'Chiến dịch Điện Biên Phủ trên không 1972 - Đòn quyết định',
+      'Chủ động tạo cục diện "vừa đánh, vừa đàm"',
+      'Buộc Mỹ phải ngồi vào bàn đàm phán với tư thế có lợi',
+    ],
+    imageUrl: 'https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=800&q=80',
   },
   {
     id: 6,
-    title: 'Phối Hợp Quân Sự - Chính Trị - Ngoại Giao',
-    description: 'Thắng lợi chiến trường là cơ sở cho thắng lợi ngoại giao.',
-    icon: '⚖️',
-    color: 'from-blue-500 to-blue-700',
-    detail: 'Ba mặt trận đấu tranh được phối hợp chặt chẽ, trong đó quân sự là nòng cốt, chính trị là gốc, ngoại giao là mũi nhọn. Chiến thắng quân sự tạo thế và lực cho đấu tranh ngoại giao đạt hiệu quả cao.',
-  },
-  {
-    id: 7,
-    title: 'Nắm Bắt Thời Cơ',
-    description: 'Chủ động tạo cục diện "vừa đánh, vừa đàm" (Mậu Thân 1968, Điện Biên Phủ trên không 1972).',
-    icon: '⏰',
-    color: 'from-indigo-500 to-indigo-700',
-    detail: 'Tổng tiến công Mậu Thân 1968 và chiến dịch Điện Biên Phủ trên không 1972 là những thời điểm then chốt. Việt Nam chủ động tạo ra thế mạnh trên chiến trường, buộc Mỹ phải ngồi vào bàn đàm phán với tư thế có lợi cho ta.',
-  },
-  {
-    id: 8,
-    title: 'Vai Trò Nghiên Cứu Chiến Lược',
-    description: 'Think tank CP-50 đóng vai trò quan trọng trong đàm phán Paris.',
-    icon: '🧠',
-    color: 'from-pink-500 to-pink-700',
-    detail: 'Ban Cố vấn Chiến lược CP-50 đã nghiên cứu sâu, đưa ra các phương án, chiến lược đàm phán hiệu quả. Đây là bài học về tầm quan trọng của công tác nghiên cứu, tham mưu chiến lược trong ngoại giao.',
-  },
-  {
-    id: 9,
     title: 'Tư Tưởng Ngoại Giao Hồ Chí Minh',
-    description: 'Cội nguồn thắng lợi: "Dĩ bất biến, ứng vạn biến".',
-    icon: '🕊️',
-    color: 'from-teal-500 to-teal-700',
-    detail: 'Tư tưởng ngoại giao Hồ Chí Minh là nền tảng triết lý cho mọi hoạt động đối ngoại: kiên định mục tiêu độc lập dân tộc, linh hoạt trong chiến lược chiến thuật, đạo đức trong quan hệ quốc tế, và luôn đặt lợi ích dân tộc lên hàng đầu.',
+    description: [
+      'Kiên định mục tiêu độc lập dân tộc - "Dĩ bất biến"',
+      'Linh hoạt chiến lược chiến thuật - "Ứng vạn biến"',
+      'Đạo đức là nền tảng trong quan hệ quốc tế',
+      'Luôn đặt lợi ích dân tộc lên hàng đầu',
+    ],
+    imageUrl: 'https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=800&q=80',
   },
 ];
 
 const Lessons = () => {
-  const [selectedLesson, setSelectedLesson] = useState(null);
+  const [currentSection, setCurrentSection] = useState(0);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
-  // Stagger animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
+  // Theo dõi vị trí scroll để cập nhật section hiện tại
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const newSection = Math.floor(scrollPosition / windowHeight);
+      setCurrentSection(Math.min(newSection, lessons.length));
+    };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: 'easeOut',
-      },
-    },
-  };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <section id="lessons" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <div id="lessons" className="relative bg-zinc-950 scroll-smooth">
+      {/* Thanh tiến trình scroll cố định */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-2 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 origin-left z-50 shadow-lg shadow-red-500/50"
+        style={{ scaleX }}
+      />
+
+      {/* Indicator bài học hiện tại */}
+      <div className="fixed top-8 right-8 z-40 bg-zinc-900/90 backdrop-blur-md border border-yellow-600/30 rounded-xl px-6 py-3 shadow-2xl">
+        <p className="text-yellow-500 font-sans font-bold text-sm">
+          Bài học {Math.min(currentSection + 1, lessons.length)}/{lessons.length}
+        </p>
+      </div>
+
+      {/* Section giới thiệu */}
+      <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950"></div>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: 'easeOut' }}
+          className="text-center z-10 max-w-5xl"
         >
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">
+          <h1 className="text-6xl md:text-8xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 mb-8">
             Bài học kinh nghiệm
-          </h2>
-          <div className="h-1 w-32 bg-gradient-to-r from-primary via-secondary to-primary rounded-full mx-auto mb-6"></div>
-          <p className="text-xl font-sans text-gray-600 max-w-3xl mx-auto">
-            Những bài học quý báu từ cuộc kháng chiến chống Mỹ cứu nước vĩ đại của dân tộc,
-            giá trị vượt thời gian cho các thế hệ mai sau.
+          </h1>
+          <div className="h-1 w-64 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-full mx-auto mb-8"></div>
+          <p className="text-2xl md:text-3xl text-gray-300 font-sans leading-relaxed mb-12">
+            Những giá trị vượt thời gian từ cuộc kháng chiến chống Mỹ cứu nước
           </p>
+          <motion.div
+            animate={{ y: [0, 15, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            className="text-yellow-500 text-4xl"
+          >
+            ↓
+          </motion.div>
+          <p className="text-yellow-500/70 font-sans mt-4 text-sm">Cuộn xuống để khám phá</p>
         </motion.div>
+      </section>
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+      {/* Các bài học - Mỗi section full screen */}
+      {lessons.map((lesson, index) => (
+        <section
+          key={lesson.id}
+          id={`bai-hoc-${lesson.id}`}
+          className="min-h-screen flex items-center px-4 py-20 relative"
         >
-          {lessons.map((lesson, index) => (
-            <motion.div
-              key={lesson.id}
-              variants={itemVariants}
-              whileHover={{ scale: 1.05, y: -5 }}
-              onClick={() => setSelectedLesson(lesson)}
-              className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer border-2 border-secondary/30 hover:border-secondary hover:shadow-2xl transition-all duration-300"
-            >
-              <div className={`h-32 bg-gradient-to-br ${lesson.color} flex items-center justify-center relative`}>
-                <span className="text-6xl">{lesson.icon}</span>
-                <div className="absolute top-2 right-2 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
-                  <span className="text-white font-sans font-bold text-sm">#{lesson.id}</span>
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-serif font-bold text-gray-800 mb-3">{lesson.title}</h3>
-                <p className="text-gray-600 font-sans leading-relaxed">{lesson.description}</p>
-              </div>
-              <div className="px-6 pb-6">
-                <div className="w-full h-1 bg-gradient-to-r from-primary via-secondary to-primary rounded-full"></div>
-                <p className="text-sm text-gray-400 font-sans mt-2 text-center">👆 Nhấn để xem chi tiết</p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Modal hiển thị chi tiết */}
-        <AnimatePresence>
-          {selectedLesson && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedLesson(null)}
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            >
+          <div className="container mx-auto max-w-7xl">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Nội dung bên trái */}
               <motion.div
-                initial={{ scale: 0.8, y: 50 }}
-                animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.8, y: 50 }}
-                onClick={(e) => e.stopPropagation()}
-                className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.5 }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+                className={`${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}
               >
-                <div className={`h-48 bg-gradient-to-br ${selectedLesson.color} flex items-center justify-center relative`}>
-                  <span className="text-8xl">{selectedLesson.icon}</span>
-                  <button
-                    onClick={() => setSelectedLesson(null)}
-                    className="absolute top-4 right-4 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white rounded-full w-10 h-10 flex items-center justify-center text-2xl transition-all"
-                  >
-                    ×
-                  </button>
+                <div className="inline-block bg-red-600/20 border border-red-600/50 rounded-full px-4 py-2 mb-6">
+                  <span className="text-yellow-400 font-sans font-bold text-sm">
+                    #{lesson.id}
+                  </span>
                 </div>
-                <div className="p-8">
-                  <h2 className="text-3xl font-serif font-bold text-primary mb-4">
-                    {selectedLesson.title}
-                  </h2>
-                  <div className="h-1 w-20 bg-gradient-to-r from-primary via-secondary to-primary rounded-full mb-6"></div>
-                  
-                  <div className="space-y-4">
-                    <div className="bg-gray-50 p-6 rounded-xl border-l-4 border-primary">
-                      <h3 className="font-serif font-bold text-gray-800 mb-2 text-lg">📌 Tóm tắt</h3>
-                      <p className="text-gray-700 font-sans leading-relaxed">{selectedLesson.description}</p>
-                    </div>
-                    
-                    <div className="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-600">
-                      <h3 className="font-serif font-bold text-gray-800 mb-2 text-lg">📖 Chi tiết & Dẫn chứng lịch sử</h3>
-                      <p className="text-gray-700 font-sans leading-relaxed">{selectedLesson.detail}</p>
-                    </div>
+                
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-8 leading-tight">
+                  {lesson.title}
+                </h2>
+                
+                <div className="h-1 w-24 bg-gradient-to-r from-red-600 to-yellow-500 rounded-full mb-8"></div>
+                
+                <ul className="space-y-5">
+                  {lesson.description.map((item, idx) => (
+                    <motion.li
+                      key={idx}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: false, amount: 0.8 }}
+                      transition={{ duration: 0.6, delay: idx * 0.15 }}
+                      className="flex items-start gap-4 group"
+                    >
+                      <span className="text-yellow-500 text-2xl mt-1 group-hover:scale-125 transition-transform">
+                        ✦
+                      </span>
+                      <p className="text-gray-300 text-lg md:text-xl font-sans leading-relaxed group-hover:text-yellow-100 transition-colors">
+                        {item}
+                      </p>
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
 
-                    {selectedLesson.application && (
-                      <div className="bg-green-50 p-6 rounded-xl border-l-4 border-green-600">
-                        <h3 className="font-serif font-bold text-gray-800 mb-2 text-lg">🎯 Vận dụng thực tiễn</h3>
-                        <p className="text-gray-700 font-sans leading-relaxed">{selectedLesson.application}</p>
-                      </div>
-                    )}
-
-                    {!selectedLesson.application && (
-                      <div className="bg-yellow-50 p-6 rounded-xl border-l-4 border-secondary">
-                        <h3 className="font-serif font-bold text-gray-800 mb-2 text-lg">💡 Ý nghĩa thời đại</h3>
-                        <p className="text-gray-700 font-sans leading-relaxed">
-                          Bài học này không chỉ có giá trị lịch sử mà còn là kim nam châm cho công tác 
-                          ngoại giao hiện đại của Việt Nam, đặc biệt trong bối cảnh hội nhập quốc tế sâu rộng.
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                  
-                  <button
-                    onClick={() => setSelectedLesson(null)}
-                    className="mt-8 w-full bg-primary hover:bg-red-700 text-white font-sans font-bold py-4 px-6 rounded-xl transition-all"
-                  >
-                    Đóng
-                  </button>
+              {/* Hình ảnh bên phải */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.5 }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+                className={`${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}
+              >
+                <div className="relative group">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
+                  <img
+                    src={lesson.imageUrl}
+                    alt={lesson.title}
+                    className="relative w-full h-[500px] object-cover rounded-2xl shadow-2xl border-2 border-yellow-600/30 group-hover:scale-[1.02] transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent rounded-2xl"></div>
                 </div>
               </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </div>
+          </div>
+        </section>
+      ))}
 
+      {/* Section kết thúc */}
+      <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-red-950/20 to-zinc-950"></div>
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.8 }}
-          className="mt-16 text-center"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: false, amount: 0.5 }}
+          transition={{ duration: 1 }}
+          className="text-center z-10 max-w-5xl"
         >
-          <div className="bg-gradient-to-r from-primary to-red-700 text-white p-8 rounded-2xl shadow-xl max-w-4xl mx-auto">
-            <p className="text-2xl font-serif font-bold italic mb-4">
-              "Những bài học này không chỉ thuộc về quá khứ, mà còn là kim nam châm soi đường cho hiện tại và tương lai."
+          <div className="bg-gradient-to-br from-red-900/40 to-zinc-900/40 backdrop-blur-xl border border-yellow-600/30 rounded-3xl p-12 shadow-2xl">
+            <h3 className="text-3xl md:text-4xl font-serif font-bold text-yellow-400 mb-8 italic">
+              "Những bài học này không chỉ thuộc về quá khứ,<br />
+              mà còn là kim nam châm soi đường<br />
+              cho hiện tại và tương lai."
+            </h3>
+            <div className="h-1 w-32 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-full mx-auto mb-6"></div>
+            <p className="text-xl text-gray-300 font-sans">
+              Giá trị lịch sử và thời đại
             </p>
-            <p className="text-lg font-sans opacity-90">Giá trị lịch sử và thời đại</p>
           </div>
         </motion.div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 

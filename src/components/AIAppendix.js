@@ -13,7 +13,7 @@ const AIAppendix = () => {
         'Thiết kế giao diện đẹp mắt và chuyên nghiệp',
         'Cải thiện tính tương tác của website'
       ],
-      color: 'from-purple-600 to-blue-600'
+      color: 'from-red-600 to-yellow-600'
     },
     {
       title: 'Gemini Pro',
@@ -25,23 +25,25 @@ const AIAppendix = () => {
         'Phân tích và tổ chức nội dung logic',
         'Đề xuất cách tiếp cận sáng tạo'
       ],
-      color: 'from-blue-600 to-cyan-600'
+      color: 'from-yellow-600 to-red-600'
     }
   ];
 
   return (
-    <section id="ai-appendix" className="py-20 bg-gradient-to-b from-white to-gray-50">
-      <div className="container mx-auto px-4">
+    <section id="ai-appendix" className="py-20 bg-zinc-950 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950"></div>
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-primary">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-red-500">
             📋 Báo Cáo Sử Dụng AI
           </h2>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+          <div className="h-1 w-48 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-full mx-auto mb-6"></div>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Tổng hợp các công nghệ AI được sử dụng trong quá trình phát triển website
           </p>
         </motion.div>
@@ -54,20 +56,20 @@ const AIAppendix = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
-              className="bg-white rounded-2xl p-8 shadow-xl border-2 border-gray-100 hover:shadow-2xl transition-shadow"
+              className="bg-zinc-900/70 rounded-2xl p-8 shadow-2xl border border-yellow-600/30 hover:border-yellow-500/50 transition-all backdrop-blur-sm"
             >
-              <div className={`text-6xl mb-6 bg-gradient-to-r ${ai.color} bg-clip-text text-transparent`}>
+              <div className={`text-6xl mb-6`}>
                 {ai.icon}
               </div>
               <h3 className={`text-3xl font-serif font-bold mb-4 bg-gradient-to-r ${ai.color} bg-clip-text text-transparent`}>
                 {ai.title}
               </h3>
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+              <p className="text-lg text-gray-300 mb-6 leading-relaxed">
                 {ai.description}
               </p>
               
               <div className="space-y-3">
-                <h4 className="font-bold text-primary text-lg mb-3">Chức năng chính:</h4>
+                <h4 className="font-bold text-yellow-400 text-lg mb-3">Chức năng chính:</h4>
                 {ai.features.map((feature, idx) => (
                   <motion.div
                     key={idx}
@@ -75,10 +77,10 @@ const AIAppendix = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3 + idx * 0.1 }}
-                    className="flex items-start gap-3"
+                    className="flex items-start gap-3 group"
                   >
-                    <span className="text-secondary text-xl mt-1">✓</span>
-                    <p className="text-gray-700">{feature}</p>
+                    <span className="text-yellow-500 text-xl mt-1 group-hover:scale-125 transition-transform">✓</span>
+                    <p className="text-gray-300 group-hover:text-yellow-100 transition-colors">{feature}</p>
                   </motion.div>
                 ))}
               </div>

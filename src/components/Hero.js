@@ -18,7 +18,7 @@ const Hero = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 mb-6">
+            <h1 className="text-4xl md:text-5xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 mb-6">
               Bài học kinh nghiệm
             </h1>
             <div className="h-1 w-48 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-full mx-auto mb-8"></div>

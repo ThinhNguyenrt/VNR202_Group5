@@ -89,18 +89,19 @@ const Minigame = () => {
   };
 
   return (
-    <section id="minigame" className="py-20 bg-bg-light">
-      <div className="container mx-auto px-4">
+    <section id="minigame" className="py-20 bg-zinc-950 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950"></div>
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 mb-4">
             Minigame 
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-gray-300">
             Kiểm tra kiến thức của bạn về cuộc kháng chiến chống Mỹ
           </p>
         </motion.div>

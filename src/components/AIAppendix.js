@@ -40,7 +40,7 @@ const AIAppendix = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-red-500">
-            📋 Báo Cáo Sử Dụng AI
+            📋 Báo cáo sử dụng AI
           </h2>
           <div className="h-1 w-48 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-full mx-auto mb-6"></div>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">

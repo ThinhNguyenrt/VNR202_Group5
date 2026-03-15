@@ -1,73 +1,78 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
+import doanketImage from '../assets/doanket.webp';
+import matTranToQuocImage from '../assets/mat-tran-to-quoc-1983.jpg';
+import hoiNghiParisImage from '../assets/hoinghiparis.jpeg';
+import dienBienPhuImage from '../assets/dienbienphu.png';
+import ngoaiGiaoHcmImage from '../assets/ngoaigiaohcm.webp';
 
 // Dữ liệu 6 bài học kinh nghiệm
 const lessons = [
   {
     id: 1,
-    title: 'Độc Lập Tự Chủ & Đoàn Kết Quốc Tế',
+    title: 'Độc lập tự chủ và đoàn kết quốc tế',
     description: [
-      'Tự lực cánh sinh là gốc - Không phụ thuộc hoàn toàn vào ngoại lực',
+      'Tự lực cánh sinh là gốc - không phụ thuộc hoàn toàn vào ngoại lực',
       'Kết hợp sức mạnh dân tộc với sức mạnh thời đại',
       'Tranh thủ ủng hộ quốc tế nhưng không đánh mất chủ quyền',
-      'Nguyên tắc: "Tự lực tự cường, tranh thủ sự ủng hộ quốc tế"',
+      'Nguyên tắc: "tự lực tự cường, tranh thủ sự ủng hộ quốc tế"',
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80',
+    imageUrl: doanketImage,
   },
   {
     id: 2,
-    title: 'Ba Tầng Mặt Trận Đấu Tranh',
+    title: 'Ba tầng mặt trận đấu tranh',
     description: [
-      'Mặt trận thống nhất dân tộc Việt Nam - Nền tảng cốt lõi',
-      'Mặt trận đoàn kết Đông Dương (Việt-Lào-Campuchia)',
+      'Mặt trận thống nhất dân tộc Việt Nam - nền tảng cốt lõi',
+      'Mặt trận đoàn kết Đông Dương (Việt - Lào - Campuchia)',
       'Mặt trận nhân dân thế giới ủng hộ Việt Nam',
       'Sức mạnh tổng hợp không thể đánh bại',
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=800&q=80',
+    imageUrl: matTranToQuocImage,
   },
   {
     id: 3,
-    title: 'Nghệ Thuật Ngoại Giao Khôn Khéo',
+    title: 'Nghệ thuật ngoại giao khôn khéo',
     description: [
       'Khéo léo giữ "sĩ diện" cho đối phương trong đàm phán',
       'Tạo "lối thoát danh dự" cho Mỹ tại Hội nghị Paris',
       'Vừa kiên định mục tiêu, vừa linh hoạt chiến thuật',
-      'Không đẩy đối phương vào thế bí - Nghệ thuật cao nhất',
+      'Không đẩy đối phương vào thế bí - nghệ thuật cao nhất',
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80',
+    imageUrl: hoiNghiParisImage,
   },
   {
     id: 4,
-    title: 'Phối Hợp 3 Mặt Trận: Quân Sự - Chính Trị - Ngoại Giao',
+    title: 'Phối hợp 3 mặt trận: quân sự - chính trị - ngoại giao',
     description: [
-      'Quân sự là nòng cốt - Tạo thế mạnh trên chiến trường',
-      'Chính trị là gốc - Sức mạnh nhân dân và hệ thống',
-      'Ngoại giao là mũi nhọn - Tranh thủ thắng lợi pháp lý',
+      'Quân sự là nòng cốt - tạo thế mạnh trên chiến trường',
+      'Chính trị là gốc - sức mạnh nhân dân và hệ thống',
+      'Ngoại giao là mũi nhọn - tranh thủ thắng lợi pháp lý',
       'Ba mặt trận phối hợp chặt chẽ, hỗ trợ lẫn nhau',
     ],
     imageUrl: 'https://images.unsplash.com/photo-1509023464722-18d996393ca8?w=800&q=80',
   },
   {
     id: 5,
-    title: 'Nắm Bắt Và Tạo Ra Thời Cơ Chiến Lược',
+    title: 'Nắm bắt và tạo ra thời cơ chiến lược',
     description: [
-      'Tổng tiến công Mậu Thân 1968 - Bước ngoặt lịch sử',
-      'Chiến dịch Điện Biên Phủ trên không 1972 - Đòn quyết định',
+      'Tổng tiến công Mậu Thân 1968 - bước ngoặt lịch sử',
+      'Chiến dịch Điện Biên Phủ trên không 1972 - đòn quyết định',
       'Chủ động tạo cục diện "vừa đánh, vừa đàm"',
       'Buộc Mỹ phải ngồi vào bàn đàm phán với tư thế có lợi',
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=800&q=80',
+    imageUrl: dienBienPhuImage,
   },
   {
     id: 6,
-    title: 'Tư Tưởng Ngoại Giao Hồ Chí Minh',
+    title: 'Tư tưởng ngoại giao Hồ Chí Minh',
     description: [
-      'Kiên định mục tiêu độc lập dân tộc - "Dĩ bất biến"',
-      'Linh hoạt chiến lược chiến thuật - "Ứng vạn biến"',
+      'Kiên định mục tiêu độc lập dân tộc - "dĩ bất biến"',
+      'Linh hoạt chiến lược chiến thuật - "ứng vạn biến"',
       'Đạo đức là nền tảng trong quan hệ quốc tế',
       'Luôn đặt lợi ích dân tộc lên hàng đầu',
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=800&q=80',
+    imageUrl: ngoaiGiaoHcmImage,
   },
 ];
 

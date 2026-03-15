@@ -39,7 +39,7 @@ const Hero = () => {
                 <div className="grid md:grid-cols-2 gap-6 mt-4">
                   <div className="bg-red-900/30 p-6 rounded-xl border-l-4 border-red-600 backdrop-blur-sm transition-all hover:scale-105 hover:bg-red-900/40">
                     <h4 className="font-bold text-red-400 mb-2">🔴 Miền Bắc</h4>
-                    <p className="text-base text-gray-300">Hậu phương lớn, xây dựng chế độ Xã hội Chủ nghĩa, làm cơ sở vững chắc cho cuộc đấu tranh giải phóng miền Nam.</p>
+                    <p className="text-base text-gray-300">Hậu phương lớn, xây dựng chế độ xã hội chủ nghĩa, làm cơ sở vững chắc cho cuộc đấu tranh giải phóng miền Nam.</p>
                   </div>
                   <div className="bg-blue-900/30 p-6 rounded-xl border-l-4 border-blue-500 backdrop-blur-sm transition-all hover:scale-105 hover:bg-blue-900/40">
                     <h4 className="font-bold text-blue-400 mb-2">🔵 Miền Nam</h4>
@@ -47,7 +47,7 @@ const Hero = () => {
                   </div>
                 </div>
                 <p className="text-center font-semibold text-yellow-400 pt-4 text-xl">
-                  🎯 Mục tiêu chung: Hòa bình, Thống nhất Tổ quốc
+                  🎯 Mục tiêu chung: hòa bình, thống nhất Tổ quốc
                 </p>
               </div>
             </div>
@@ -96,7 +96,7 @@ const Hero = () => {
               <button
                 className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-sans font-bold py-4 px-8 rounded-full shadow-lg shadow-red-500/30 transform hover:scale-105 transition-all border border-yellow-600/50"
               >
-                Khám Phá Bài Học ↓
+                Khám phá bài học ↓
               </button>
             </Link>
           </motion.div>

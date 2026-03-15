@@ -26,7 +26,7 @@ const Navbar = () => {
     { name: 'Bài học', path: '/bai-hoc' },
     { name: 'Liên hệ', path: '/lien-he' },
     { name: 'Minigame', path: '/minigame' },
-    { name: 'Phụ Lục AI', path: '/phu-luc-ai' },
+    { name: 'Phụ lục AI', path: '/phu-luc-ai' },
   ];
 
   return (
@@ -46,7 +46,7 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               className="flex items-center space-x-3"
             >
-              <span className="text-primary font-serif font-bold text-xl">Kháng Chiến 1954-1975</span>
+              <span className="text-primary font-serif font-bold text-xl">Kháng chiến 1954-1975</span>
             </motion.div>
           </Link>
 

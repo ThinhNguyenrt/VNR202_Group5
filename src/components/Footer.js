@@ -17,7 +17,7 @@ const Footer = () => {
               viewport={{ once: true }}
               className="md:col-span-2"
             >
-              <h3 className="text-xl font-serif font-bold mb-4 text-secondary">Về Dự Án</h3>
+              <h3 className="text-xl font-serif font-bold mb-4 text-secondary">Về dự án</h3>
               <p className="leading-relaxed font-sans">
                 Dự án website về bài học kinh nghiệm từ cuộc kháng chiến chống Mỹ 
                 (1954-1975)
@@ -30,7 +30,7 @@ const Footer = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <h3 className="text-xl font-serif font-bold mb-4 text-secondary">Liên Kết Nhanh</h3>
+              <h3 className="text-xl font-serif font-bold mb-4 text-secondary">Liên kết nhanh</h3>
               <ul className="space-y-2 font-sans">
                 <li className="hover:text-secondary cursor-pointer transition-colors">
                   <Link to="/">→ Trang chủ</Link>
@@ -45,7 +45,7 @@ const Footer = () => {
                   <Link to="/lien-he">→ Liên hệ</Link>
                 </li>
                 <li className="hover:text-secondary cursor-pointer transition-colors">
-                  <Link to="/phu-luc-ai">→ Phụ Lục AI</Link>
+                  <Link to="/phu-luc-ai">→ Phụ lục AI</Link>
                 </li>
               </ul>
             </motion.div>

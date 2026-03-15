@@ -176,7 +176,7 @@ const Minigame = () => {
                   transition={{ type: 'spring', stiffness: 200 }}
                 >
                   <h3 className="text-4xl font-serif font-bold text-primary mb-4">
-                    Hoàn Thành! 🎉
+                    Hoàn thành! 🎉
                   </h3>
                   <p className="text-3xl font-semibold text-gray-700 mb-8">
                     Điểm số: {score}/{questions.length}
@@ -192,7 +192,7 @@ const Minigame = () => {
                     onClick={resetGame}
                     className="bg-primary hover:bg-red-700 text-white font-sans font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105"
                   >
-                    Chơi Lại
+                    Chơi lại
                   </button>
                 </motion.div>
               </div>

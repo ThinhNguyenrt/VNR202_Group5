@@ -1,83 +1,131 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import doanketImage from '../assets/doanket.webp';
-import matTranToQuocImage from '../assets/mat-tran-to-quoc-1983.jpg';
+import bacHoImage from '../assets/bachothammienbac.jpg';
+import xeTangImage from '../assets/xetang.jpg';
 import hoiNghiParisImage from '../assets/hoinghiparis.jpeg';
-import dienBienPhuImage from '../assets/dienbienphu.png';
-import ngoaiGiaoHcmImage from '../assets/ngoaigiaohcm.webp';
 
-// Dữ liệu 6 bài học kinh nghiệm
-const lessons = [
+// 3 trụ cột chiến lược
+const pillars = [
   {
     id: 1,
-    title: 'Độc lập tự chủ và đoàn kết quốc tế',
-    description: [
-      'Tự lực cánh sinh là gốc - không phụ thuộc hoàn toàn vào ngoại lực',
-      'Kết hợp sức mạnh dân tộc với sức mạnh thời đại',
-      'Tranh thủ ủng hộ quốc tế nhưng không đánh mất chủ quyền',
-      'Nguyên tắc: "tự lực tự cường, tranh thủ sự ủng hộ quốc tế"',
-    ],
-    imageUrl: doanketImage,
+    tab: 'Xây dựng Hậu phương miền Bắc',
+    strategy: 'Đưa miền Bắc lên Chủ Nghĩa Xã hội',
+    analysis:
+      'Tại Đại hội Đại biểu toàn quốc lần thứ III (1960), Đảng khẳng định cách mạng XHCN ở miền Bắc có vai trò quyết định nhất đối với sự phát triển của toàn bộ cách mạng Việt Nam. Miền Bắc không chỉ tự bảo vệ mình trước chiến tranh phá hoại của Mỹ, mà còn thực hiện lý tưởng "Thóc không thiếu một cân, quân không thiếu một người", trở thành hậu phương vĩ đại cung cấp sức người, sức của cho tiền tuyến miền Nam.',
+    imageUrl: bacHoImage,
+    caption: 'Bác hồ thăm công trình thủy lợi lớn nhất miền Bắc 20-9-1958',
   },
   {
     id: 2,
-    title: 'Ba tầng mặt trận đấu tranh',
-    description: [
-      'Mặt trận thống nhất dân tộc Việt Nam - nền tảng cốt lõi',
-      'Mặt trận đoàn kết Đông Dương (Việt - Lào - Campuchia)',
-      'Mặt trận nhân dân thế giới ủng hộ Việt Nam',
-      'Sức mạnh tổng hợp không thể đánh bại',
-    ],
-    imageUrl: matTranToQuocImage,
+    tab: 'Tiền tuyến miền Nam',
+    strategy: 'Cách mạng dân tộc dân chủ nhân dân',
+    analysis:
+      'Từ Hội nghị Trung ương 15 (1959), Đảng đánh giá không thể chỉ đấu tranh hòa bình, mà phải sử dụng bạo lực cách mạng, kết hợp đấu tranh chính trị với đấu tranh vũ trang.',
+    method:
+      'Vận dụng linh hoạt nghệ thuật "Ba mũi giáp công" (Quân sự, Chính trị, Binh vận) để đánh địch trên cả 3 vùng chiến lược. Nhờ sự chuyển hướng đúng đắn này, tiền tuyến miền Nam đã lần lượt bẻ gãy các chiến lược tàn bạo của Mỹ từ "Chiến tranh đặc biệt" đến "Chiến tranh cục bộ" và "Việt Nam hóa chiến tranh".',
+    imageUrl: xeTangImage,
+    caption: 'Xe tăng húc đổ cổng Dinh Độc Lập',
   },
   {
     id: 3,
-    title: 'Nghệ thuật ngoại giao khôn khéo',
-    description: [
-      'Khéo léo giữ "sĩ diện" cho đối phương trong đàm phán',
-      'Tạo "lối thoát danh dự" cho Mỹ tại Hội nghị Paris',
-      'Vừa kiên định mục tiêu, vừa linh hoạt chiến thuật',
-      'Không đẩy đối phương vào thế bí - nghệ thuật cao nhất',
-    ],
+    tab: 'Mặt trận ngoại giao',
+    strategy:
+      'Kết hợp chặt chẽ giữa sức mạnh quân sự trên chiến trường và đàm phán trên bàn hội nghị',
+    analysis:
+      'Sự kiện ký kết Hiệp định Paris năm 1973 là một bước ngoặt lịch sử. Đây là kết quả của chiến thắng vĩ đại "Điện Biên Phủ trên không" cuối năm 1972, buộc Mỹ phải rút quân. Nghệ thuật ngoại giao đã hiện thực hóa trọn vẹn tư tưởng của Bác Hồ: "Đánh cho Mỹ cút", tạo tiền đề tất yếu để hai năm sau ta tiến lên "Đánh cho Ngụy nhào" (1975).',
     imageUrl: hoiNghiParisImage,
-  },
-  {
-    id: 4,
-    title: 'Phối hợp 3 mặt trận: quân sự - chính trị - ngoại giao',
-    description: [
-      'Quân sự là nòng cốt - tạo thế mạnh trên chiến trường',
-      'Chính trị là gốc - sức mạnh nhân dân và hệ thống',
-      'Ngoại giao là mũi nhọn - tranh thủ thắng lợi pháp lý',
-      'Ba mặt trận phối hợp chặt chẽ, hỗ trợ lẫn nhau',
-    ],
-    imageUrl: 'https://images.unsplash.com/photo-1509023464722-18d996393ca8?w=800&q=80',
-  },
-  {
-    id: 5,
-    title: 'Nắm bắt và tạo ra thời cơ chiến lược',
-    description: [
-      'Tổng tiến công Mậu Thân 1968 - bước ngoặt lịch sử',
-      'Chiến dịch Điện Biên Phủ trên không 1972 - đòn quyết định',
-      'Chủ động tạo cục diện "vừa đánh, vừa đàm"',
-      'Buộc Mỹ phải ngồi vào bàn đàm phán với tư thế có lợi',
-    ],
-    imageUrl: dienBienPhuImage,
-  },
-  {
-    id: 6,
-    title: 'Tư tưởng ngoại giao Hồ Chí Minh',
-    description: [
-      'Kiên định mục tiêu độc lập dân tộc - "dĩ bất biến"',
-      'Linh hoạt chiến lược chiến thuật - "ứng vạn biến"',
-      'Đạo đức là nền tảng trong quan hệ quốc tế',
-      'Luôn đặt lợi ích dân tộc lên hàng đầu',
-    ],
-    imageUrl: ngoaiGiaoHcmImage,
+    caption: 'Lễ ký kết hiệp định Paris 1973',
   },
 ];
 
+// 5 bài học trọng tâm (flip cards)
+const keyLessons = [
+  {
+    id: 1,
+    title: 'Giương cao ngọn cờ Độc lập dân tộc và Chủ nghĩa xã hội',
+    content:
+      'Đây là đường lối độc tạo ra sức mạnh vĩ đại nhất. Độc lập dân tộc để tập hợp lực lượng ở miền Nam; Chủ nghĩa xã hội để khơi dậy sức mạnh của hậu phương miền Bắc. Hai ngọn cờ hòa quyện, tạo nên khối đại đoàn kết toàn dân tộc không thể bị phá vỡ.',
+  },
+  {
+    id: 2,
+    title: 'Tìm ra phương pháp đấu tranh đúng đắn, sáng tạo',
+    content:
+      'Không dập khuôn máy móc, Đảng ta đã kết hợp nhuần nhuyễn giữa đánh tiêu diệt và đánh tiêu hao sinh lực địch. Đánh thẳng vào ý chí xâm lược của đối phương bằng cách kết hợp khởi nghĩa của quần chúng với chiến tranh cách mạng, đập tan từng chiến lược của đế quốc Mỹ hùng mạnh.',
+  },
+  {
+    id: 3,
+    title: 'Công tác tổ chức và lãnh đạo chiến tranh',
+    content:
+      'Thể hiện rõ qua sự nhạy bén và nghệ thuật chọn thời cơ của Bộ Chính trị. Sự chỉ đạo sắc bén từ cấp bộ đảng đến chi ủy quân đội đã giúp chớp đúng thời cơ chiến lược (Mùa Xuân 1975), tập trung lực lượng tổng tiến công và nổi dậy giải phóng hoàn toàn miền Nam trong thời gian ngắn nhất.',
+  },
+  {
+    id: 4,
+    title: 'Hết sức coi trọng công tác xây dựng Đảng',
+    content:
+      'Giữ vững vai trò lãnh đạo tuyệt đối của Đảng Cộng sản Việt Nam. Tuy nhiên, Đảng cũng nghiêm túc nhìn nhận bài học về sự nóng vội, chủ quan, duy ý chí trong xây dựng CNXH ở miền Bắc ở một số thời điểm. Đây là bài học về sự tự soi, tự sửa để ngày càng vững mạnh.',
+  },
+  {
+    id: 5,
+    title: 'Nghệ thuật ngoại giao khôn khéo',
+    content:
+      'Kết hợp chặt chẽ giữa đấu tranh quân sự với đấu tranh ngoại giao. Đảng ta đã khéo léo giữ "sĩ diện", tạo "lối thoát danh dự" cho đối phương trên bàn đàm phán Paris nhưng vẫn kiên định mục tiêu độc lập. Đây là nghệ thuật cao nhất khi vừa giữ vững nguyên tắc, vừa linh hoạt chiến thuật để không đẩy đối phương vào thế bí, buộc Mỹ phải rút quân về nước.',
+  },
+];
+
+// Flip Card component
+const FlipCard = ({ lesson }) => {
+  const [flipped, setFlipped] = useState(false);
+
+  return (
+    <div
+      className="cursor-pointer"
+      style={{ perspective: '1000px', height: '300px' }}
+      onClick={() => setFlipped(!flipped)}
+    >
+      <div
+        style={{
+          transformStyle: 'preserve-3d',
+          transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+          transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+          position: 'relative',
+          height: '100%',
+        }}
+      >
+        {/* Mặt trước */}
+        <div
+          style={{ backfaceVisibility: 'hidden' }}
+          className="absolute inset-0 bg-zinc-900 border border-yellow-600/30 rounded-2xl p-6 flex flex-col items-center justify-center shadow-xl hover:border-yellow-500/60 transition-colors"
+        >
+          <span className="text-yellow-500 text-3xl font-serif font-bold mb-4">
+            #{lesson.id}
+          </span>
+          <h3 className="text-lg font-serif font-bold text-white text-center leading-snug">
+            {lesson.title}
+          </h3>
+          <p className="text-yellow-500/60 text-sm mt-5 font-sans flex items-center gap-1">
+            <span>↻</span> Nhấn để xem nội dung
+          </p>
+        </div>
+
+        {/* Mặt sau */}
+        <div
+          style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+          className="absolute inset-0 bg-gradient-to-br from-red-950/80 to-zinc-900 border border-red-600/40 rounded-2xl p-6 flex flex-col justify-center shadow-xl"
+        >
+          <p className="text-gray-200 font-sans text-[15px] leading-relaxed">
+            {lesson.content}
+          </p>
+          <p className="text-yellow-500/60 text-sm mt-4 font-sans text-right">
+            ↻ Nhấn để lật lại
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Lessons = () => {
-  const [currentSection, setCurrentSection] = useState(0);
+  const [activeTab, setActiveTab] = useState(0);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -85,18 +133,7 @@ const Lessons = () => {
     restDelta: 0.001,
   });
 
-  // Theo dõi vị trí scroll để cập nhật section hiện tại
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const newSection = Math.floor(scrollPosition / windowHeight);
-      setCurrentSection(Math.min(newSection, lessons.length));
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const activePillar = pillars[activeTab];
 
   return (
     <div id="lessons" className="relative bg-zinc-950 scroll-smooth">
@@ -105,13 +142,6 @@ const Lessons = () => {
         className="fixed top-0 left-0 right-0 h-2 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 origin-left z-50 shadow-lg shadow-red-500/50"
         style={{ scaleX }}
       />
-
-      {/* Indicator bài học hiện tại */}
-      <div className="fixed top-8 right-8 z-40 bg-zinc-900/90 backdrop-blur-md border border-yellow-600/30 rounded-xl px-6 py-3 shadow-2xl">
-        <p className="text-yellow-500 font-sans font-bold text-sm">
-          Bài học {Math.min(currentSection + 1, lessons.length)}/{lessons.length}
-        </p>
-      </div>
 
       {/* Section giới thiệu */}
       <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
@@ -140,81 +170,135 @@ const Lessons = () => {
         </motion.div>
       </section>
 
-      {/* Các bài học - Mỗi section full screen */}
-      {lessons.map((lesson, index) => (
-        <section
-          key={lesson.id}
-          id={`bai-hoc-${lesson.id}`}
-          className="min-h-screen flex items-center px-4 py-20 relative"
-        >
-          <div className="container mx-auto max-w-7xl">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Nội dung bên trái */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, amount: 0.5 }}
-                transition={{ duration: 0.8, ease: 'easeOut' }}
-                className={`${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}
-              >
-                <div className="inline-block bg-red-600/20 border border-red-600/50 rounded-full px-4 py-2 mb-6">
-                  <span className="text-yellow-400 font-sans font-bold text-sm">
-                    #{lesson.id}
-                  </span>
-                </div>
-                
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-8 leading-tight">
-                  {lesson.title}
-                </h2>
-                
-                <div className="h-1 w-24 bg-gradient-to-r from-red-600 to-yellow-500 rounded-full mb-8"></div>
-                
-                <ul className="space-y-5">
-                  {lesson.description.map((item, idx) => (
-                    <motion.li
-                      key={idx}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: false, amount: 0.8 }}
-                      transition={{ duration: 0.6, delay: idx * 0.15 }}
-                      className="flex items-start gap-4 group"
-                    >
-                      <span className="text-yellow-500 text-2xl mt-1 group-hover:scale-125 transition-transform">
-                        ✦
-                      </span>
-                      <p className="text-gray-300 text-lg md:text-xl font-sans leading-relaxed group-hover:text-yellow-100 transition-colors">
-                        {item}
-                      </p>
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
+      {/* ===== 3 Trụ cột chiến lược – Tabs ===== */}
+      <section className="py-20 px-4 relative">
+        <div className="container mx-auto max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 mb-4">
+              3 Trụ cột chiến lược
+            </h2>
+            <div className="h-1 w-40 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-full mx-auto"></div>
+          </motion.div>
 
-              {/* Hình ảnh bên phải */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, amount: 0.5 }}
-                transition={{ duration: 0.8, ease: 'easeOut' }}
-                className={`${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}
+          {/* Tab buttons */}
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-0 bg-zinc-900/70 border border-yellow-600/20 rounded-2xl p-2 mb-8">
+            {pillars.map((pillar, index) => (
+              <button
+                key={pillar.id}
+                onClick={() => setActiveTab(index)}
+                className={`flex-1 py-3 px-4 rounded-xl font-sans font-semibold text-sm md:text-base transition-all duration-300 ${
+                  activeTab === index
+                    ? 'bg-gradient-to-r from-red-700 to-red-600 text-white shadow-lg shadow-red-500/30'
+                    : 'text-gray-400 hover:text-yellow-400 hover:bg-zinc-800/50'
+                }`}
               >
-                <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
-                  <img
-                    src={lesson.imageUrl}
-                    alt={lesson.title}
-                    className="relative w-full h-[500px] object-cover rounded-2xl shadow-2xl border-2 border-yellow-600/30 group-hover:scale-[1.02] transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent rounded-2xl"></div>
-                </div>
-              </motion.div>
-            </div>
+                <span className="mr-2 text-yellow-500">{index + 1}.</span>
+                {pillar.tab}
+              </button>
+            ))}
           </div>
-        </section>
-      ))}
+
+          {/* Tab content */}
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start"
+          >
+            {/* Text */}
+            <div className="bg-zinc-900/70 backdrop-blur-sm border border-yellow-600/20 rounded-2xl p-8 space-y-6">
+              <div>
+                <span className="inline-block text-xs font-sans font-bold text-yellow-500 uppercase tracking-widest mb-2">
+                  Chiến lược
+                </span>
+                <p className="text-xl font-serif font-semibold text-yellow-300">
+                  {activePillar.strategy}
+                </p>
+              </div>
+              <div className="h-px bg-yellow-600/20"></div>
+              <div>
+                <span className="inline-block text-xs font-sans font-bold text-red-400 uppercase tracking-widest mb-2">
+                  Phân tích quyết sách
+                </span>
+                <p className="text-gray-300 font-sans text-base leading-relaxed">
+                  {activePillar.analysis}
+                </p>
+              </div>
+              {activePillar.method && (
+                <>
+                  <div className="h-px bg-yellow-600/20"></div>
+                  <div>
+                    <span className="inline-block text-xs font-sans font-bold text-blue-400 uppercase tracking-widest mb-2">
+                      Phương pháp đấu tranh
+                    </span>
+                    <p className="text-gray-300 font-sans text-base leading-relaxed">
+                      {activePillar.method}
+                    </p>
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Image */}
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-2xl blur-xl opacity-40 group-hover:opacity-60 transition-opacity"></div>
+              <figure className="relative">
+                <img
+                  src={activePillar.imageUrl}
+                  alt={activePillar.tab}
+                  className="relative w-full h-80 object-cover rounded-2xl shadow-2xl border-2 border-yellow-600/30 group-hover:scale-[1.02] transition-transform duration-500"
+                />
+                <figcaption className="mt-3 text-center text-sm text-gray-400 font-sans italic">
+                  {activePillar.caption}
+                </figcaption>
+              </figure>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ===== Bài học trọng tâm – Flip Cards ===== */}
+      <section className="py-20 px-4 relative">
+        <div className="container mx-auto max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 mb-4">
+              Bài học trọng tâm
+            </h2>
+            <div className="h-1 w-40 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-full mx-auto mb-4"></div>
+            <p className="text-gray-400 font-sans">Nhấn vào từng thẻ để khám phá nội dung</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {keyLessons.map((lesson, index) => (
+              <motion.div
+                key={lesson.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <FlipCard lesson={lesson} />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Section kết thúc */}
-      <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+      <section className="min-h-[60vh] flex items-center justify-center px-4 py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-red-950/20 to-zinc-950"></div>
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -230,9 +314,7 @@ const Lessons = () => {
               cho hiện tại và tương lai."
             </h3>
             <div className="h-1 w-32 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-full mx-auto mb-6"></div>
-            <p className="text-xl text-gray-300 font-sans">
-              Giá trị lịch sử và thời đại
-            </p>
+            <p className="text-xl text-gray-300 font-sans">Giá trị lịch sử và thời đại</p>
           </div>
         </motion.div>
       </section>

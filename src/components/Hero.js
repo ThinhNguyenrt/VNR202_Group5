@@ -31,8 +31,11 @@ const Hero = () => {
             
             {/* Bối cảnh lịch sử */}
             <div className="max-w-4xl mx-auto text-left bg-zinc-900/70 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-yellow-600/30">
-              <h3 className="text-2xl font-serif font-bold text-yellow-400 mb-4">📜 Bối cảnh lịch sử</h3>
+              <h3 className="text-2xl font-serif font-bold text-yellow-400 mb-4">📜 Cội nguồn sức mạnh- Bối cảnh lịch sử</h3>
               <div className="space-y-4 text-gray-300 text-lg leading-relaxed font-sans">
+                <p>
+                  Giai đoạn 1945 - 1946 là tiền đề sống còn. Với sách lược "Hòa để tiến", Đảng đã bảo vệ chính quyền non trẻ, xây dựng khối đại đoàn kết toàn dân. Đây chính là nền móng để xây dựng "Hậu phương miền Bắc" vững chắc sau này.
+                </p>
                 <p>
                   Sau Hiệp định Geneva 1954, đất nước tạm thời chia làm hai miền:
                 </p>

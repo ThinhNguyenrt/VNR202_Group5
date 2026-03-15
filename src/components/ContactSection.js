@@ -163,39 +163,7 @@ const ContactSection = () => {
               />
             </div>
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-zinc-900/70 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-yellow-600/30"
-          >
-            <h3 className="text-3xl font-serif font-bold text-center mb-6 text-yellow-400">
-              ✨ Vận dụng bài học lịch sử vào thực tiễn
-            </h3>
-            <div className="space-y-4 text-lg font-sans leading-relaxed">
-              <div className="bg-red-900/30 rounded-xl p-6 border-l-4 border-red-500 backdrop-blur-sm">
-                <p className="mb-4 text-gray-300">
-                  <strong className="text-red-400">🎯 Tự tin, tự lực, tự cường:</strong> Tinh thần độc lập tự chủ trong chính sách 
-                  đối ngoại, không phụ thuộc vào một nước lớn nào, đa phương hóa, đa dạng hóa quan hệ quốc tế.
-                </p>
-              </div>
-              
-              <div className="bg-blue-900/30 rounded-xl p-6 border-l-4 border-blue-500 backdrop-blur-sm">
-                <p className="mb-4 text-gray-300">
-                  <strong className="text-blue-400">🤝 Kết hợp sức mạnh:</strong> Hội nhập quốc tế sâu rộng, đồng thời giữ vững 
-                  bản sắc dân tộc. Việt Nam là "bạn, đối tác tin cậy" của cộng đồng quốc tế.
-                </p>
-              </div>
-              
-              <div className="bg-green-900/30 rounded-xl p-6 border-l-4 border-green-500 backdrop-blur-sm">
-                <p className="text-gray-300">
-                  <strong className="text-green-400">💎 Kho tàng kinh nghiệm:</strong> Thắng lợi 1975 không chỉ là niềm tự hào 
-                  lịch sử mà còn là nguồn cảm hứng, bài học quý báu cho công tác ngoại giao, giúp 
-                  Việt Nam vượt qua thách thức và hội nhập thành công trong thế kỷ 21.
-                </p>
-              </div>
-            </div>
-          </motion.div>
+         
         </div>
       </div>
     </section>

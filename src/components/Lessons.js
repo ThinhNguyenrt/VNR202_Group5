@@ -78,8 +78,8 @@ const FlipCard = ({ lesson }) => {
 
   return (
     <div
-      className="cursor-pointer"
-      style={{ perspective: '1000px', height: '300px' }}
+      className="cursor-pointer h-[320px] sm:h-[300px]"
+      style={{ perspective: '1000px' }}
       onClick={() => setFlipped(!flipped)}
     >
       <div
@@ -94,12 +94,12 @@ const FlipCard = ({ lesson }) => {
         {/* Mặt trước */}
         <div
           style={{ backfaceVisibility: 'hidden' }}
-          className="absolute inset-0 bg-zinc-900 border border-yellow-600/30 rounded-2xl p-6 flex flex-col items-center justify-center shadow-xl hover:border-yellow-500/60 transition-colors"
+          className="absolute inset-0 bg-zinc-900 border border-yellow-600/30 rounded-2xl p-4 sm:p-6 flex flex-col items-center justify-center shadow-xl hover:border-yellow-500/60 transition-colors"
         >
           <span className="text-yellow-500 text-3xl font-serif font-bold mb-4">
             #{lesson.id}
           </span>
-          <h3 className="text-lg font-serif font-bold text-white text-center leading-snug">
+          <h3 className="text-base sm:text-lg font-serif font-bold text-white text-center leading-snug">
             {lesson.title}
           </h3>
           <p className="text-yellow-500/60 text-sm mt-5 font-sans flex items-center gap-1">
@@ -110,9 +110,9 @@ const FlipCard = ({ lesson }) => {
         {/* Mặt sau */}
         <div
           style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
-          className="absolute inset-0 bg-gradient-to-br from-red-950/80 to-zinc-900 border border-red-600/40 rounded-2xl p-6 flex flex-col justify-center shadow-xl"
+          className="absolute inset-0 bg-gradient-to-br from-red-950/80 to-zinc-900 border border-red-600/40 rounded-2xl p-4 sm:p-6 flex flex-col justify-center shadow-xl"
         >
-          <p className="text-gray-200 font-sans text-[15px] leading-relaxed">
+          <p className="text-gray-200 font-sans text-sm sm:text-[15px] leading-relaxed overflow-y-auto pr-1">
             {lesson.content}
           </p>
           <p className="text-yellow-500/60 text-sm mt-4 font-sans text-right">
@@ -139,12 +139,12 @@ const Lessons = () => {
     <div id="lessons" className="relative bg-zinc-950 scroll-smooth">
       {/* Thanh tiến trình scroll cố định */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-2 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 origin-left z-50 shadow-lg shadow-red-500/50"
+        className="fixed top-[60px] md:top-[72px] left-0 right-0 h-1.5 md:h-2 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 origin-left z-40 shadow-lg shadow-red-500/50"
         style={{ scaleX }}
       />
 
       {/* Section giới thiệu */}
-      <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+      <section className="min-h-screen flex items-center justify-center px-4 pt-24 md:pt-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950"></div>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -152,11 +152,11 @@ const Lessons = () => {
           transition={{ duration: 1, ease: 'easeOut' }}
           className="text-center z-10 max-w-5xl"
         >
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 mb-8">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 mb-8">
             Bài học kinh nghiệm
           </h1>
-          <div className="h-1 w-64 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-full mx-auto mb-8"></div>
-          <p className="text-2xl md:text-3xl text-gray-300 font-sans leading-relaxed mb-12">
+          <div className="h-1 w-40 sm:w-64 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-full mx-auto mb-8"></div>
+          <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 font-sans leading-relaxed mb-12 px-2">
             Những giá trị vượt thời gian từ cuộc kháng chiến chống Mỹ cứu nước
           </p>
           <motion.div
@@ -171,7 +171,7 @@ const Lessons = () => {
       </section>
 
       {/* ===== 3 Trụ cột chiến lược – Tabs ===== */}
-      <section className="py-20 px-4 relative">
+      <section className="py-14 md:py-20 px-4 relative">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -180,7 +180,7 @@ const Lessons = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 mb-4">
               3 Trụ cột chiến lược
             </h2>
             <div className="h-1 w-40 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-full mx-auto"></div>
@@ -192,7 +192,7 @@ const Lessons = () => {
               <button
                 key={pillar.id}
                 onClick={() => setActiveTab(index)}
-                className={`flex-1 py-3 px-4 rounded-xl font-sans font-semibold text-sm md:text-base transition-all duration-300 ${
+                className={`flex-1 py-3 px-4 rounded-xl font-sans font-semibold text-sm md:text-base text-left sm:text-center transition-all duration-300 ${
                   activeTab === index
                     ? 'bg-gradient-to-r from-red-700 to-red-600 text-white shadow-lg shadow-red-500/30'
                     : 'text-gray-400 hover:text-yellow-400 hover:bg-zinc-800/50'
@@ -210,15 +210,15 @@ const Lessons = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 items-start"
           >
             {/* Text */}
-            <div className="bg-zinc-900/70 backdrop-blur-sm border border-yellow-600/20 rounded-2xl p-8 space-y-6">
+            <div className="bg-zinc-900/70 backdrop-blur-sm border border-yellow-600/20 rounded-2xl p-5 sm:p-6 md:p-8 space-y-6">
               <div>
                 <span className="inline-block text-xs font-sans font-bold text-yellow-500 uppercase tracking-widest mb-2">
                   Chiến lược
                 </span>
-                <p className="text-xl font-serif font-semibold text-yellow-300">
+                <p className="text-lg sm:text-xl font-serif font-semibold text-yellow-300">
                   {activePillar.strategy}
                 </p>
               </div>
@@ -253,7 +253,7 @@ const Lessons = () => {
                 <img
                   src={activePillar.imageUrl}
                   alt={activePillar.tab}
-                  className="relative w-full h-80 object-cover rounded-2xl shadow-2xl border-2 border-yellow-600/30 group-hover:scale-[1.02] transition-transform duration-500"
+                  className="relative w-full h-64 sm:h-72 md:h-80 object-cover rounded-2xl shadow-2xl border-2 border-yellow-600/30 group-hover:scale-[1.02] transition-transform duration-500"
                 />
                 <figcaption className="mt-3 text-center text-sm text-gray-400 font-sans italic">
                   {activePillar.caption}
@@ -265,7 +265,7 @@ const Lessons = () => {
       </section>
 
       {/* ===== Bài học trọng tâm – Flip Cards ===== */}
-      <section className="py-20 px-4 relative">
+      <section className="py-14 md:py-20 px-4 relative">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -274,7 +274,7 @@ const Lessons = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 mb-4">
               Bài học trọng tâm
             </h2>
             <div className="h-1 w-40 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-full mx-auto mb-4"></div>
@@ -298,7 +298,7 @@ const Lessons = () => {
       </section>
 
       {/* Section kết thúc */}
-      <section className="min-h-[60vh] flex items-center justify-center px-4 py-20 relative overflow-hidden">
+      <section className="min-h-[60vh] flex items-center justify-center px-4 py-14 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-red-950/20 to-zinc-950"></div>
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -307,14 +307,12 @@ const Lessons = () => {
           transition={{ duration: 1 }}
           className="text-center z-10 max-w-5xl"
         >
-          <div className="bg-gradient-to-br from-red-900/40 to-zinc-900/40 backdrop-blur-xl border border-yellow-600/30 rounded-3xl p-12 shadow-2xl">
-            <h3 className="text-3xl md:text-4xl font-serif font-bold text-yellow-400 mb-8 italic">
-              "Những bài học này không chỉ thuộc về quá khứ,<br />
-              mà còn là kim nam châm soi đường<br />
-              cho hiện tại và tương lai."
+          <div className="bg-gradient-to-br from-red-900/40 to-zinc-900/40 backdrop-blur-xl border border-yellow-600/30 rounded-3xl p-6 sm:p-8 md:p-12 shadow-2xl">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-yellow-400 mb-8 italic leading-relaxed">
+              "Những bài học này không chỉ thuộc về quá khứ, mà còn là kim nam châm soi đường cho hiện tại và tương lai."
             </h3>
             <div className="h-1 w-32 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-full mx-auto mb-6"></div>
-            <p className="text-xl text-gray-300 font-sans">Giá trị lịch sử và thời đại</p>
+            <p className="text-lg sm:text-xl text-gray-300 font-sans">Giá trị lịch sử và thời đại</p>
           </div>
         </motion.div>
       </section>

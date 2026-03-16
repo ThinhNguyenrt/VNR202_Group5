@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center bg-zinc-950 pt-20 relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center bg-zinc-950 pt-24 sm:pt-28 relative overflow-hidden"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950"></div>
       <div className="container mx-auto px-4 relative z-10">
@@ -18,38 +18,38 @@ const Hero = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 mb-6">
               Bài học kinh nghiệm
             </h1>
-            <div className="h-1 w-48 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-full mx-auto mb-8"></div>
-            <h2 className="text-3xl md:text-5xl font-serif font-semibold text-gray-200 mb-8">
+            <div className="h-1 w-36 sm:w-48 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-full mx-auto mb-8"></div>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif font-semibold text-gray-200 mb-6 sm:mb-8">
               Cuộc kháng chiến chống Mỹ
             </h2>
-            <p className="text-xl md:text-2xl font-sans text-gray-400 mb-8">
+            <p className="text-lg sm:text-xl md:text-2xl font-sans text-gray-400 mb-8">
               (1954 - 1975)
             </p>
             
             {/* Bối cảnh lịch sử */}
-            <div className="max-w-4xl mx-auto text-left bg-zinc-900/70 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-yellow-600/30">
-              <h3 className="text-2xl font-serif font-bold text-yellow-400 mb-4">📜 Cội nguồn sức mạnh- Bối cảnh lịch sử</h3>
-              <div className="space-y-4 text-gray-300 text-lg leading-relaxed font-sans">
+            <div className="max-w-4xl mx-auto text-left bg-zinc-900/70 backdrop-blur-sm rounded-2xl p-5 sm:p-6 md:p-8 shadow-2xl border border-yellow-600/30">
+              <h3 className="text-xl sm:text-2xl font-serif font-bold text-yellow-400 mb-4">📜 Cội nguồn sức mạnh- Bối cảnh lịch sử</h3>
+              <div className="space-y-4 text-gray-300 text-base sm:text-lg leading-relaxed font-sans">
                 <p>
                   Giai đoạn 1945 - 1946 là tiền đề sống còn. Với sách lược "Hòa để tiến", Đảng đã bảo vệ chính quyền non trẻ, xây dựng khối đại đoàn kết toàn dân. Đây chính là nền móng để xây dựng "Hậu phương miền Bắc" vững chắc sau này.
                 </p>
                 <p>
                   Sau Hiệp định Geneva 1954, đất nước tạm thời chia làm hai miền:
                 </p>
-                <div className="grid md:grid-cols-2 gap-6 mt-4">
-                  <div className="bg-red-900/30 p-6 rounded-xl border-l-4 border-red-600 backdrop-blur-sm transition-all hover:scale-105 hover:bg-red-900/40">
+                <div className="grid md:grid-cols-2 gap-4 sm:gap-6 mt-4">
+                  <div className="bg-red-900/30 p-4 sm:p-6 rounded-xl border-l-4 border-red-600 backdrop-blur-sm transition-all hover:scale-[1.02] hover:bg-red-900/40">
                     <h4 className="font-bold text-red-400 mb-2">🔴 Miền Bắc</h4>
                     <p className="text-base text-gray-300">Hậu phương lớn, xây dựng chế độ xã hội chủ nghĩa, làm cơ sở vững chắc cho cuộc đấu tranh giải phóng miền Nam.</p>
                   </div>
-                  <div className="bg-blue-900/30 p-6 rounded-xl border-l-4 border-blue-500 backdrop-blur-sm transition-all hover:scale-105 hover:bg-blue-900/40">
+                  <div className="bg-blue-900/30 p-4 sm:p-6 rounded-xl border-l-4 border-blue-500 backdrop-blur-sm transition-all hover:scale-[1.02] hover:bg-blue-900/40">
                     <h4 className="font-bold text-blue-400 mb-2">🔵 Miền Nam</h4>
                     <p className="text-base text-gray-300">Tiền tuyến lớn, thực hiện cách mạng dân tộc dân chủ nhân dân, đấu tranh giành độc lập và tự do.</p>
                   </div>
                 </div>
-                <p className="text-center font-semibold text-yellow-400 pt-4 text-xl">
+                <p className="text-center font-semibold text-yellow-400 pt-4 text-lg sm:text-xl">
                   🎯 Mục tiêu chung: hòa bình, thống nhất Tổ quốc
                 </p>
               </div>
@@ -75,14 +75,14 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="mt-12 relative"
           >
-            <div className="w-full max-w-4xl mx-auto h-96 bg-gradient-to-r from-red-900/60 to-red-800/60 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden relative border border-yellow-600/30">
+            <div className="w-full max-w-4xl mx-auto min-h-[260px] sm:min-h-[320px] md:h-96 bg-gradient-to-r from-red-900/60 to-red-800/60 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden relative border border-yellow-600/30">
               <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-transparent to-black/40 flex items-center justify-center">
-                <div className="text-center text-white">
-                  <p className="text-6xl mb-4">🇻🇳</p>
-                  <p className="text-2xl md:text-3xl font-serif font-bold italic text-yellow-300">
+                <div className="text-center text-white px-4 py-8">
+                  <p className="text-5xl sm:text-6xl mb-4">🇻🇳</p>
+                  <p className="text-xl sm:text-2xl md:text-3xl font-serif font-bold italic text-yellow-300">
                     "Không có gì quý hơn độc lập, tự do"
                   </p>
-                  <p className="text-lg font-sans mt-4 text-gray-300">- Chủ tịch Hồ Chí Minh</p>
+                  <p className="text-base sm:text-lg font-sans mt-4 text-gray-300">- Chủ tịch Hồ Chí Minh</p>
                 </div>
               </div>
             </div>
@@ -97,7 +97,7 @@ const Hero = () => {
           >
             <Link to="/bai-hoc">
               <button
-                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-sans font-bold py-4 px-8 rounded-full shadow-lg shadow-red-500/30 transform hover:scale-105 transition-all border border-yellow-600/50"
+                className="w-full sm:w-auto bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-sans font-bold py-3.5 sm:py-4 px-7 sm:px-8 rounded-full shadow-lg shadow-red-500/30 transform hover:scale-105 transition-all border border-yellow-600/50"
               >
                 Khám phá bài học ↓
               </button>

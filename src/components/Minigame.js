@@ -20,15 +20,15 @@ const Minigame = () => {
       explanation: 'Đây là bài học về sự khôn khéo với nước lớn. Mỹ là nước lớn đứng đầu thế giới tư bản, việc họ phải ngồi đàm phán đã là một thất bại. Ta chủ trương "nối nhịp cầu vàng" để họ rút quân mà không bị tổn thương sĩ diện quá mức, từ đó đạt được kết quả thực chất cho dân tộc.'
     },
     {
-      question: 'Nhóm "think tank" đầu tiên của ngoại giao Việt Nam, đóng vai trò "túi khôn" soạn thảo các kịch bản đàm phán Paris có tên ký hiệu là gì?',
+      question: 'Việc Đảng ta kết hợp chặt chẽ các mặt trận Quân sự, Chính trị và Ngoại giao trong kháng chiến chống Mỹ phản ánh bài học kinh nghiệm nào?',
       options: [
-        'Nhóm Đoàn kết Đông Dương.',
-        'Tổ Giải pháp Ngoại giao.',
-        'Nhóm CP-50.',
-        'Tiểu ban Việt Nam 13.'
+        'Bài học về xây dựng Đảng trong sạch, vững mạnh.',
+        'Bài học về phương pháp cách mạng và nghệ thuật khởi nghĩa, chiến tranh cách mạng.',
+        'Bài học về đoàn kết quốc tế, tranh thủ thời cơ.',
+        'Bài học về việc củng cố chính quyền cách mạng ở vùng giải phóng.'
       ],
-      correct: 2,
-      explanation: 'CP-50 là đơn vị trực thuộc Bộ Chính trị, tập hợp những nhà ngoại giao xuất sắc để nghiên cứu sâu các phương án "đánh - đàm". Nhóm đã xây dựng các giải pháp hòa bình đột phá như giải pháp 10 điểm (1969) hay dự thảo Hiệp định Paris (1972).'
+      correct: 1,
+      explanation: 'Thắng lợi của cuộc kháng chiến chống Mỹ là kết quả của việc Đảng vận dụng nhuần nhuyễn phương pháp cách mạng: kết hợp đấu tranh quân sự với chính trị và ngoại giao. Trong đó, nghệ thuật "vừa đánh, vừa đàm" đã giúp ta mở ra cục diện mới, buộc Mỹ phải ký Hiệp định Paris và rút quân về nước, tạo tiền đề cho đại thắng mùa Xuân 1975.'
     },
     {
       question: 'Bài học kinh nghiệm nào là "kim chỉ nam" giúp Việt Nam nhận được viện trợ từ cả Liên Xô và Trung Quốc dù hai nước này đang chia rẽ sâu sắc?',
@@ -68,7 +68,7 @@ const Minigame = () => {
   const handleAnswer = (index) => {
     setSelectedAnswer(index);
     if (index === questions[currentQuestion].correct) {
-      setScore(score + 1);
+      setScore((prevScore) => prevScore + 1);
     }
 
     setTimeout(() => {
@@ -89,7 +89,7 @@ const Minigame = () => {
   };
 
   return (
-    <section id="minigame" className="py-20 bg-zinc-950 relative overflow-hidden">
+    <section id="minigame" className="bg-zinc-950 relative overflow-hidden py-14 md:py-20 pt-28 md:pt-32">
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950"></div>
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -98,10 +98,10 @@ const Minigame = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 mb-4">
             Minigame 
           </h2>
-          <p className="text-xl text-gray-300">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 px-2">
             Kiểm tra kiến thức của bạn về cuộc kháng chiến chống Mỹ
           </p>
         </motion.div>
@@ -110,21 +110,21 @@ const Minigame = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto"
+          className="max-w-3xl mx-auto w-full"
         >
-          <div className="bg-white rounded-2xl shadow-2xl p-8">
+          <div className="bg-white rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8">
             {!showResult ? (
               <>
-                <div className="flex justify-between items-center mb-8">
-                  <span className="text-lg font-semibold text-gray-600">
+                <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-6 md:mb-8">
+                  <span className="text-base sm:text-lg font-semibold text-gray-600">
                     Câu {currentQuestion + 1}/{questions.length}
                   </span>
-                  <span className="text-lg font-sans font-semibold text-primary">
+                  <span className="text-base sm:text-lg font-sans font-semibold text-primary">
                     Điểm: {score}
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-serif font-bold text-gray-800 mb-8">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-serif font-bold text-gray-800 mb-6 md:mb-8 leading-snug">
                   {questions[currentQuestion].question}
                 </h3>
 
@@ -136,7 +136,7 @@ const Minigame = () => {
                       whileTap={{ scale: 0.98 }}
                       onClick={() => handleAnswer(index)}
                       disabled={selectedAnswer !== null}
-                      className={`w-full p-4 rounded-lg text-left font-medium transition-all ${
+                      className={`w-full p-3 sm:p-4 rounded-lg text-left text-sm sm:text-base leading-relaxed font-medium transition-all ${
                         selectedAnswer === null
                           ? 'bg-gray-100 hover:bg-gray-200 text-gray-800'
                           : selectedAnswer === index
@@ -162,26 +162,26 @@ const Minigame = () => {
                     <p className="text-sm font-semibold text-blue-800 mb-2">
                       {selectedAnswer === questions[currentQuestion].correct ? '✓ Chính xác!' : '✗ Chưa đúng'}
                     </p>
-                    <p className="text-sm text-gray-700 leading-relaxed">
+                    <p className="text-sm text-gray-700 leading-relaxed break-words">
                       <span className="font-semibold">Giải thích:</span> {questions[currentQuestion].explanation}
                     </p>
                   </motion.div>
                 )}
               </>
             ) : (
-              <div className="text-center">
+              <div className="text-center px-2">
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ type: 'spring', stiffness: 200 }}
                 >
-                  <h3 className="text-4xl font-serif font-bold text-primary mb-4">
+                  <h3 className="text-3xl sm:text-4xl font-serif font-bold text-primary mb-4">
                     Hoàn thành! 🎉
                   </h3>
-                  <p className="text-3xl font-semibold text-gray-700 mb-8">
+                  <p className="text-2xl sm:text-3xl font-semibold text-gray-700 mb-6 md:mb-8">
                     Điểm số: {score}/{questions.length}
                   </p>
-                  <p className="text-xl text-gray-600 mb-8">
+                  <p className="text-lg sm:text-xl text-gray-600 mb-6 md:mb-8">
                     {score === questions.length
                       ? 'Xuất sắc! Bạn đã nắm vững kiến thức!'
                       : score >= questions.length / 2
@@ -190,7 +190,7 @@ const Minigame = () => {
                   </p>
                   <button
                     onClick={resetGame}
-                    className="bg-primary hover:bg-red-700 text-white font-sans font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105"
+                    className="w-full sm:w-auto bg-primary hover:bg-red-700 text-white font-sans font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105"
                   >
                     Chơi lại
                   </button>

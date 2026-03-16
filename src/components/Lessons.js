@@ -43,32 +43,27 @@ const keyLessons = [
   {
     id: 1,
     title: 'Giương cao ngọn cờ Độc lập dân tộc và Chủ nghĩa xã hội',
-    content:
-      'Đây là đường lối độc tạo ra sức mạnh vĩ đại nhất. Độc lập dân tộc để tập hợp lực lượng ở miền Nam; Chủ nghĩa xã hội để khơi dậy sức mạnh của hậu phương miền Bắc. Hai ngọn cờ hòa quyện, tạo nên khối đại đoàn kết toàn dân tộc không thể bị phá vỡ.',
+    content: `Kết hợp Độc lập dân tộc (để tập hợp dân miền Nam) và Chủ nghĩa xã hội (để xây dựng hậu phương miền Bắc).`,
   },
   {
     id: 2,
     title: 'Tìm ra phương pháp đấu tranh đúng đắn, sáng tạo',
-    content:
-      'Không dập khuôn máy móc, Đảng ta đã kết hợp nhuần nhuyễn giữa đánh tiêu diệt và đánh tiêu hao sinh lực địch. Đánh thẳng vào ý chí xâm lược của đối phương bằng cách kết hợp khởi nghĩa của quần chúng với chiến tranh cách mạng, đập tan từng chiến lược của đế quốc Mỹ hùng mạnh.',
+    content: `Sáng tạo, không máy móc. Kết hợp đấu tranh vũ trang với khởi nghĩa quần chúng; đánh vào cả sinh lực và ý chí địch.`,
   },
   {
     id: 3,
     title: 'Công tác tổ chức và lãnh đạo chiến tranh',
-    content:
-      'Thể hiện rõ qua sự nhạy bén và nghệ thuật chọn thời cơ của Bộ Chính trị. Sự chỉ đạo sắc bén từ cấp bộ đảng đến chi ủy quân đội đã giúp chớp đúng thời cơ chiến lược (Mùa Xuân 1975), tập trung lực lượng tổng tiến công và nổi dậy giải phóng hoàn toàn miền Nam trong thời gian ngắn nhất.',
+    content: `Nghệ thuật chớp thời cơ. Sự chỉ đạo nhạy bén, quyết đoán từ Bộ Chính trị giúp giải phóng miền Nam thần tốc trong mùa Xuân 1975.`,
   },
   {
     id: 4,
     title: 'Hết sức coi trọng công tác xây dựng Đảng',
-    content:
-      'Giữ vững vai trò lãnh đạo tuyệt đối của Đảng Cộng sản Việt Nam. Tuy nhiên, Đảng cũng nghiêm túc nhìn nhận bài học về sự nóng vội, chủ quan, duy ý chí trong xây dựng CNXH ở miền Bắc ở một số thời điểm. Đây là bài học về sự tự soi, tự sửa để ngày càng vững mạnh.',
+    content: `Giữ vững quyền lãnh đạo tuyệt đối. Luôn "tự soi, tự sửa", thẳng thắn nhìn nhận khuyết điểm để ngày càng vững mạnh hơn.`,
   },
   {
     id: 5,
     title: 'Nghệ thuật ngoại giao khôn khéo',
-    content:
-      'Kết hợp chặt chẽ giữa đấu tranh quân sự với đấu tranh ngoại giao. Đảng ta đã khéo léo giữ "sĩ diện", tạo "lối thoát danh dự" cho đối phương trên bàn đàm phán Paris nhưng vẫn kiên định mục tiêu độc lập. Đây là nghệ thuật cao nhất khi vừa giữ vững nguyên tắc, vừa linh hoạt chiến thuật để không đẩy đối phương vào thế bí, buộc Mỹ phải rút quân về nước.',
+    content: `Chiến lược "Vừa đánh, vừa đàm". Kiên định độc lập nhưng linh hoạt tạo "lối thoát danh dự" cho đối phương để đạt mục tiêu Mỹ rút quân.`,
   },
 ];
 
@@ -112,7 +107,7 @@ const FlipCard = ({ lesson }) => {
           style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
           className="absolute inset-0 bg-gradient-to-br from-red-950/80 to-zinc-900 border border-red-600/40 rounded-2xl p-4 sm:p-6 flex flex-col justify-center shadow-xl"
         >
-          <p className="text-gray-200 font-sans text-sm sm:text-[15px] leading-relaxed overflow-y-auto pr-1">
+          <p className="text-gray-200 font-sans text-sm sm:text-[15px] leading-relaxed whitespace-pre-line overflow-y-auto pr-1">
             {lesson.content}
           </p>
           <p className="text-yellow-500/60 text-sm mt-4 font-sans text-right">
